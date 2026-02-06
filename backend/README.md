@@ -79,6 +79,8 @@ copy .env.example .env
 # - SECRET_KEY (generar una clave segura)
 ```
 
+> 📘 **Configurar Supabase**: Consulta la guía [SUPABASE_SETUP.md](../SUPABASE_SETUP.md) en la raíz del proyecto para instrucciones detalladas sobre cómo crear y configurar tu proyecto de Supabase.
+
 ### 5. Ejecutar Migraciones
 
 ```bash
