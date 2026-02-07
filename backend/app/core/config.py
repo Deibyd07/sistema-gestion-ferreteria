@@ -3,7 +3,7 @@ Configuración de la aplicación usando Pydantic Settings
 """
 from typing import List, Optional
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import AnyHttpUrl, validator
+from pydantic import AnyHttpUrl, field_validator
 
 
 class Settings(BaseSettings):
@@ -22,11 +22,12 @@ class Settings(BaseSettings):
     # CORS
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173"]
     
-    @validator("ALLOWED_ORIGINS", pre=True)
+    @field_validator("ALLOWED_ORIGINS", mode="before")
+    @classmethod
     def assemble_cors_origins(cls, v: str | List[str]) -> List[str]:
-        if isinstance(v, str) and not v.startswith("["):
+        if isinstance(v, str):
             return [i.strip() for i in v.split(",")]
-        elif isinstance(v, (list, str)):
+        elif isinstance(v, list):
             return v
         raise ValueError(v)
     
@@ -37,6 +38,17 @@ class Settings(BaseSettings):
     SUPABASE_URL: Optional[str] = None
     SUPABASE_KEY: Optional[str] = None
     SUPABASE_JWT_SECRET: Optional[str] = None
+    SUPABASE_SERVICE_ROLE_KEY: Optional[str] = None  # Para operaciones admin
+    
+    # Supabase Storage
+    SUPABASE_STORAGE_BUCKET_LOGOS: str = "company-logos"
+    SUPABASE_STORAGE_BUCKET_DOCUMENTS: str = "documents"
+    SUPABASE_STORAGE_BUCKET_PRODUCTS: str = "product-images"
+    SUPABASE_STORAGE_MAX_FILE_SIZE: int = 5242880  # 5MB en bytes
+    
+    # Supabase Auth
+    SUPABASE_AUTH_REDIRECT_URL: Optional[str] = "http://localhost:3000/auth/callback"
+    SUPABASE_AUTH_PASSWORD_MIN_LENGTH: int = 8
     
     # Configuración del entorno
     ENVIRONMENT: str = "development"  # development, staging, production

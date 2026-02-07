@@ -75,11 +75,28 @@ copy .env.example .env
 
 # Editar .env con tus credenciales
 # - DATABASE_URL (conexión a PostgreSQL/Supabase)
-# - SUPABASE_URL y SUPABASE_KEY
-# - SECRET_KEY (generar una clave segura)
+# - SUPABASE_URL, SUPABASE_KEY, SUPABASE_JWT_SECRET
+# - SUPABASE_SERVICE_ROLE_KEY (para operaciones admin)
+# - SECRET_KEY (generar con: openssl rand -hex 32)
 ```
 
-### 5. Ejecutar Migraciones
+**📖 Guía detallada**: Ver [SUPABASE_SETUP.md](../SUPABASE_SETUP.md) para configurar Supabase completamente.
+
+### 5. Verificar Configuración de Supabase
+
+```bash
+# Verificar que Supabase esté configurado correctamente
+python verify_supabase_setup.py
+```
+
+Este script verificará:
+- ✅ Variables de entorno
+- ✅ Conexión con Supabase
+- ✅ Conexión con base de datos
+- ✅ Buckets de Storage
+- ✅ Módulos de Auth y Storage
+
+### 6. Ejecutar Migraciones
 
 ```bash
 # Cuando estén configuradas las migraciones de Alembic:
