@@ -103,6 +103,19 @@ npm run dev
 
 Frontend disponible en: http://localhost:3000
 
+### 4. Configurar Supabase
+
+Para configurar Supabase (base de datos y autenticación), sigue la guía detallada:
+
+📘 **[Guía de Configuración de Supabase](SUPABASE_SETUP.md)**
+
+Esta guía incluye:
+- Creación del proyecto en Supabase
+- Obtención de credenciales
+- Configuración de autenticación
+- Configuración de storage (opcional)
+- Verificación de la conexión
+
 ## 📁 Estructura del Proyecto
 
 ```
@@ -146,7 +159,8 @@ sistema-gestion-ferreteria/
 ## 🚦 Fase Actual: MVP Core (Fase 1)
 
 Actualmente trabajando en:
-- ✅ Configuración inicial del proyecto
+- ✅ Configuración inicial del proyecto (Issue #1)
+- ✅ Configuración de Supabase (Issue #2)
 - ⏳ Modelos de base de datos
 - ⏳ Sistema de autenticación
 - ⏳ Gestión básica de productos

@@ -80,7 +80,7 @@ copy .env.example .env
 # - SECRET_KEY (generar con: openssl rand -hex 32)
 ```
 
-**📖 Guía detallada**: Ver [SUPABASE_SETUP.md](../SUPABASE_SETUP.md) para configurar Supabase completamente.
+**📖 Guía detallada**: Ver [SUPABASE_SETUP.md](../docs/setup/SUPABASE_SETUP.md) para configurar Supabase completamente.
 
 ### 5. Verificar Configuración de Supabase
 
