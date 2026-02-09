@@ -95,14 +95,13 @@ Nuestros templates están diseñados para ser:
 **Cuándo usar**: Al crear cualquier PR.
 
 **Campos principales**:
-- ¿Qué cambia este PR? (descripción)
+- ¿Qué hace este PR? (descripción en 2-3 líneas)
 - Issue relacionado
-- Tipo (Bug fix/Feature/Documentación/etc.)
-- Checklist básico (6 items)
+- Checklist básico (solo 3 items esenciales)
 
 **Opcional**: Screenshots, notas adicionales
 
-**Tiempo estimado**: 2 minutos
+**Tiempo estimado**: 1-2 minutos
 
 ## 💡 Tips para Usar los Templates
 
@@ -168,17 +167,14 @@ Criterios de Aceptación:
 ### Para Pull Requests
 ```markdown
 ✅ BUENO:
-¿Qué cambia?
+¿Qué hace este PR?
 "Agrega validación de stock negativo en el formulario de productos.
-Ahora muestra error si el usuario intenta ingresar cantidad negativa."
+Muestra error si el usuario intenta ingresar cantidad negativa."
 
 Checklist:
-☑ El código funciona
-☑ Agregué tests
-☑ Tests pasan
-☑ Actualicé docs
-☑ Seguí estándares
-☑ Sin conflictos
+☑ El código funciona y los tests pasan
+☑ Actualicé la documentación (si aplica)
+☑ Sin conflictos de merge
 
 ❌ EVITAR:
 - Descripciones vagas ("arreglé cosas")
@@ -209,11 +205,11 @@ Checklist:
 ### Crear PR
 1. Asegurar que el código funciona
 2. Usar template de PR
-3. Completar descripción y tipo
-4. Marcar checklist (6 items)
+3. Completar descripción en 2-3 líneas
+4. Marcar checklist (3 items)
 5. Submit
 
-**Total: ~2 minutos**
+**Total: ~1-2 minutos**
 
 ## ❓ FAQ
 
@@ -245,9 +241,9 @@ Preferimos que uses los templates porque aseguran que no falte información impo
 **Reducción**: ~65% más rápido
 
 ### Pull Request
-**Antes**: Checklist de 40+ items
-**Ahora**: Checklist de 6 items esenciales
-**Reducción**: ~85% más simple
+**Antes**: Checklist de 40+ items, 6 secciones
+**Ahora**: Checklist de 3 items esenciales, ultra simple
+**Reducción**: ~90% más simple
 
 ## ✅ Principios de los Templates
 

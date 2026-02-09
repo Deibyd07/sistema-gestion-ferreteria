@@ -47,7 +47,7 @@ Usamos **Scrum** para organizar el trabajo. Lee nuestra [Guía de Scrum](docs/pr
 5. **Contador** - Área financiera
 6. **Auditor** - Auditoría y reportes (opcional)
 
-## �️ Stack Tecnológico
+## 🛠️ Stack Tecnológico
 
 ### Backend
 - **FastAPI** - Framework web moderno y rápido
@@ -82,7 +82,12 @@ Usamos **Scrum** para organizar el trabajo. Lee nuestra [Guía de Scrum](docs/pr
 - Python 3.11+
 - PostgreSQL (o cuenta de Supabase)
 
-* 2. Backend Setup
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/Deibyd07/sistema-gestion-ferreteria.git
+cd sistema-gestion-ferreteria
+
+# 2. Backend Setup
 cd backend
 python -m venv venv
 venv\Scripts\activate  # Windows
@@ -102,15 +107,9 @@ npm run dev
 - API Docs: http://localhost:8000/api/docs
 - Frontend: http://localhost:3000
 
-**Ver la [Guía de Instalación Completa](INSTALLATION.md) para detalles.**
-📘 **[Guía de Configuración de Supabase](SUPABASE_SETUP.md)**
+**📘 Ver la [Guía de Instalación Completa](INSTALLATION.md) para detalles.**
 
-Esta guía incluye:
-- Creación del proyecto en Supabase
-- Obtención de credenciales
-- Configuración de autenticación
-- Configuración de storage (opcional)
-- Verificación de la conexión
+**⚙️ [Guía de Configuración de Supabase](docs/setup/SUPABASE_SETUP.md)** para configurar la base de datos y autenticación.
 
 ## 📁 Estructura del Proyecto
 
@@ -118,69 +117,56 @@ Esta guía incluye:
 sistema-gestion-ferreteria/
 ├── backend/                    # API Backend (FastAPI)
 │   ├── app/
-│   │   ├── api/               # Endpoints
-│   │   ├── core/              # Configuración
-│   │   ├── db/                # Base de datos
+│   │   ├── api/               # Endpoints de la API
+│   │   ├── core/              # Configuración central
+│   │   ├── db/                # Configuración de BD
 │   │   ├── models/            # Modelos SQLAlchemy
 │   │   ├── schemas/           # Schemas Pydantic
 │   │   ├── services/          # Lógica de negocio
-│   │   └── main.py           # Punto de entrada
-│   ├── tests/                 # Tests
+│   │   ├── repositories/      # Acceso a datos
+│   │   └── main.py            # Punto de entrada
+│   ├── tests/                 # Tests unitarios
+│   ├── alembic/               # Migraciones de BD
 │   ├── requirements.txt       # Dependencias Python
 │   └── README.md
 │
 ├── frontend/                   # Aplicación Frontend (Next.js)
 │   ├── src/
-│   │   ├── app/              # App Router (páginas)
-│   │   ├── components/       # Componentes React
-│   │   ├── lib/              # Utilidades
-│   │   ├── services/         # API clients
-│   │   └── types/            # Tipos TypeScript
+│   │   ├── app/               # App Router (páginas)
+│   │   ├── components/        # Componentes React
+│   │   ├── lib/               # Utilidades y configs
+│   │   ├── services/          # API clients
+│   │   ├── types/             # Tipos TypeScript
+│   │   ├── contexts/          # React Contexts
+│   │   └── hooks/             # Custom Hooks
+│   ├── public/                # Assets estáticos
 │   ├── package.json
 │   └── README.md
 │
-├── docs/                       # Documentación (próximamente)
-├── ISSUES.md                   # Listado de issues del proyecto
-├── sistema_gestion_ferreteria_completo.md  # Documentación completa
+├── docs/                       # Documentación
+│   ├── project/               # Docs del proyecto
+│   ├── database/              # Docs de BD
+│   ├── setup/                 # Guías de configuración
+│   └── security/              # Docs de seguridad
+│
+├── .github/                    # GitHub templates
+│   ├── ISSUE_TEMPLATE/        # Templates de issues
+│   └── PULL_REQUEST_TEMPLATE.md
+│
+├── INSTALLATION.md             # Guía de instalación
+├── CONTRIBUTING.md             # Guía de contribución
+├── CODE_OF_CONDUCT.md          # Código de conducta
 └── README.md                   # Este archivo
 ```
 
 ## 📝 Documentación
 
-- **Documentación Completa**: [sistema_gestion_ferreteria_completo.md](sistema_gestion_ferreteria_completo.md)
-- **Issues y Roadmap**: [ISSUES.md](ISSUES.md)
-- **Backend README**: [backend/README.md](backend/README.md)
-- **Frontend README**: [frontend/README.md](frontend/README.md)
-
-## 🚦 Fase Actual: MVP Core (Fase 1)
-
-Actualmente trabajando en:
-- ✅ Configuración inicial del proyecto (Issue #1)
-- ✅ Configuración de Supabase (Issue #2)
-- ⏳ Modelos de base de datos
-- ⏳ Sistema de autenticación
-- ⏳ Gestión básica de productos
-- ⏳ POS básico
-- ⏳ Inventario básico
-
-Ver [ISSUES.md](ISSUES.md) para el roadmap completo.
-
-## 🤝 Contribución
-
-1. Crear rama feature: `git checkout -b feature/nueva-funcionalidad`
-2. Hacer commits descriptivos: `git commit -m 'Add: nueva funcionalidad'`
-3. Push a la rama: `git push origin feature/nueva-funcionalidad`
-4. Crear Pull Request
-
-## 📄 Licencia
-
-Por definir
-� Documentación
-
 ### Para Usuarios y Desarrolladores
 - 📖 **[Guía de Instalación](INSTALLATION.md)** - Setup detallado del proyecto
 - 🤝 **[Guía de Contribución](CONTRIBUTING.md)** - Cómo contribuir al proyecto
 - 📜 **[Código de Conducta](CODE_OF_CONDUCT.md)** - Nuestros estándares comunitarios
+- 🎓 **[Guía de Bienvenida](WELCOME.md)** - Bienvenido al proyecto
+- 📚 **[Índice de Documentación](docs/DOCUMENTATION_INDEX.md)** - Toda la documentación
 
 ### Desarrollo y Arquitectura
 - 💻 **[Backend README](backend/README.md)** - Documentación del API
@@ -191,7 +177,11 @@ Por definir
 ### Metodología Scrum
 - 🏃 **[Guía de Scrum](docs/project/SCRUM_GUIDE.md)** - Cómo trabajamos con Scrum
 - 📋 **[Product Backlog](docs/project/PRODUCT_BACKLOG.md)** - Roadmap y funcionalidades
-- ✅ �️ Roadmap
+- ✅ **[Definition of Done](docs/project/DEFINITION_OF_DONE.md)** - Criterios de completitud
+- 🎯 **[Sprint Planning Template](docs/project/SPRINT_PLANNING_TEMPLATE.md)** - Template para planificación
+- 🎉 **[Sprint Review Template](docs/project/SPRINT_REVIEW_TEMPLATE.md)** - Template para revisión
+
+## 🗓️ Roadmap
 
 Estamos en **Q1 2026**, trabajando en las bases del sistema.
 
@@ -291,4 +281,4 @@ Por definir
 3. Explora el [Project Board](https://github.com/Deibyd07/Proyecto-Ferreteria/projects)
 4. ¡Elige tu primer issue!
 
-**Preguntas?** Abre un [Discussion](https://github.com/Deibyd07/Proyecto-Ferreteria/discussions) o comenta en un issue.
+**¿Preguntas?** Abre un [Discussion](https://github.com/Deibyd07/Proyecto-Ferreteria/discussions) o comenta en un issue.
