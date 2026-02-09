@@ -20,19 +20,17 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     # CORS
-    ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173"]
+    ALLOWED_ORIGINS: str | List[str] = "http://localhost:3000,http://localhost:5173"
     
-    @field_validator("ALLOWED_ORIGINS", mode="before")
+    @field_validator("ALLOWED_ORIGINS", mode="after")
     @classmethod
     def assemble_cors_origins(cls, v: str | List[str]) -> List[str]:
         if isinstance(v, str):
-            return [i.strip() for i in v.split(",")]
-        elif isinstance(v, list):
-            return v
-        raise ValueError(v)
+            return [i.strip() for i in v.split(",") if i.strip()]
+        return v
     
     # Database - Supabase PostgreSQL
-    DATABASE_URL: str = "postgresql://user:password@localhost:5432/ferreteria_db"
+    DATABASE_URL: str = "postgresql+psycopg://user:password@localhost:5432/ferreteria_db"
     
     # Supabase
     SUPABASE_URL: Optional[str] = None
@@ -57,8 +55,10 @@ class Settings(BaseSettings):
     # Logging
     LOG_LEVEL: str = "INFO"
     
-    # Sentry (para monitoreo en producción)
+    # Sentry (para monitoreo en produccion)
     SENTRY_DSN: Optional[str] = None
+    SENTRY_TRACES_SAMPLE_RATE: float = 0.1
+    SENTRY_PROFILES_SAMPLE_RATE: float = 0.0
     
     model_config = SettingsConfigDict(
         env_file=".env",

@@ -78,9 +78,19 @@ copy .env.example .env
 # - SUPABASE_URL, SUPABASE_KEY, SUPABASE_JWT_SECRET
 # - SUPABASE_SERVICE_ROLE_KEY (para operaciones admin)
 # - SECRET_KEY (generar con: openssl rand -hex 32)
+# - SENTRY_DSN (opcional, para monitoreo)
+# - SENTRY_TRACES_SAMPLE_RATE (opcional, default 0.1)
 ```
 
 **📖 Guía detallada**: Ver [SUPABASE_SETUP.md](../docs/setup/SUPABASE_SETUP.md) para configurar Supabase completamente.
+
+### Sentry (Opcional)
+
+Para habilitar monitoreo en produccion:
+
+1. Crea un proyecto en Sentry.
+2. Agrega `SENTRY_DSN` y ajusta `SENTRY_TRACES_SAMPLE_RATE` en tu `.env`.
+3. Reinicia la app.
 
 ### 5. Verificar Configuración de Supabase
 
