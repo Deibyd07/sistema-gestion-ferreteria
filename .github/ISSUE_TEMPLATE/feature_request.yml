@@ -1,0 +1,114 @@
+name: ✨ Feature Request
+description: Proponer una nueva funcionalidad
+title: "[FEATURE] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe tu idea de forma clara y concisa.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 🎯 ¿Qué problema resuelve?
+      description: Como [usuario], necesito [funcionalidad] para [beneficio]
+      placeholder: |
+        Ej: Como administrador, necesito un reporte de productos más vendidos para decidir qué reabastecer.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 💡 ¿Cómo debería funcionar?
+      placeholder: |
+        Describe la funcionalidad:
+        - ¿Qué hace?
+        - ¿Cómo se usa?
+        - ¿Qué muestra?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🔥 Prioridad
+      options:
+        - High - Muy importante
+        - Medium - Importante
+        - Low - Nice to have
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: ℹ️ Información adicional (opcional)
+      placeholder: |
+        - Mockups o diseños
+        - Alternativas consideradas
+        - Beneficios específicos
+    attributes:
+      label: 📂 Épica Relacionada
+      description: ¿A qué épica del proyecto pertenece?
+      options:
+        - Epic 1 - Setup
+        - Epic 2 - Database
+        - Epic 3 - Auth
+        - Epic 4 - Products
+        - Epic 5 - Inventory
+        - Epic 6 - Sales
+        - Epic 7 - Purchases
+        - Epic 8 - POS
+        - Epic 9 - Reports
+        - Epic 10 - Other
+        - No sé / Nueva épica
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: 🎨 Mockups o Diseños
+      description: Si tienes mockups, wireframes o diseños, agrégalos aquí
+      placeholder: Arrastra y suelta imágenes aquí
+
+  - type: textarea
+    id: technical
+    attributes:
+      label: 🔧 Detalles Técnicos (Opcional)
+      description: Si tienes conocimientos técnicos, describe tu idea de implementación
+      placeholder: |
+        Ej: 
+        - Backend: Endpoint GET /api/v1/reports/top-products
+        - Frontend: Componente TopProductsChart usando Chart.js
+        - Base de datos: Query que agrupe ventas por producto
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: ✅ Criterios de Aceptación
+      description: ¿Cómo sabríamos que esta funcionalidad está completada?
+      placeholder: |
+        - [ ] Usuario puede acceder al reporte desde el menú
+        - [ ] Muestra los 10 productos más vendidos
+        - [ ] Permite filtrar por rango de fechas
+        - [ ] Muestra cantidad vendida y monto total
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: ℹ️ Contexto Adicional
+      description: Cualquier otra información relevante
+      placeholder: Esta funcionalidad es común en otros sistemas de inventario
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✅ Checklist
+      options:
+        - label: Busqué en issues existentes y esta funcionalidad no está propuesta
+          required: true
+        - label: Esta funcionalidad beneficia a más usuarios, no solo a mí
+          required: true
+        - label: Incluí toda la información solicitada
+          required: true

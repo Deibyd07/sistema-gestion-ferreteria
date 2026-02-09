@@ -1,0 +1,64 @@
+name: 🐛 Bug Report
+description: Reportar un error o comportamiento inesperado
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por reportar este bug. Completa la información esencial.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 📝 ¿Qué está mal?
+      description: Describe el bug de forma clara y concisa
+      placeholder: "Ej: El formulario de productos acepta stock negativo"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔄 ¿Cómo reproducirlo?
+      placeholder: |
+        1. Ir a '...'
+        2. Hacer clic en '...'
+        3. Ver error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ ¿Qué debería pasar?
+      placeholder: "Debería mostrar error de validación"
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 📸 Screenshots (opcional)
+      placeholder: Arrastra imágenes aquí si ayuda
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 🔴 Severidad
+      options:
+        - Critical - Sistema no funciona
+        - High - Problema importante
+        - Medium - Problema menor
+        - Low - Cosmético
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: ℹ️ Información adicional (opcional)
+      placeholder: |
+        - OS: Windows/Mac/Linux
+        - Navegador: Chrome/Firefox/Safari
+        - Logs de error si los hay
