@@ -40,7 +40,7 @@ disallow_untyped_defs = true
 plugins = ["pydantic.mypy"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["../tests/backend"]
 python_files = "test_*.py"
 python_functions = "test_*"
 addopts = "-v --tb=short"

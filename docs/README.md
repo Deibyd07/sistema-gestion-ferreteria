@@ -2,22 +2,36 @@
 
 Esta carpeta contiene toda la documentación técnica y organizacional del proyecto.
 
+> **Navegación rápida:** [🚀 CI/CD](#-cicd-y-devops) | [💾 Database](#%EF%B8%8F-database) | [📋 Proyecto](#-proyecto) | [🔐 Seguridad](#-seguridad)
+
 ## 📁 Estructura de Documentación
 
-### 📦 [setup/](./setup/)
-Guías de configuración e instalación del sistema.
+### 🚀 CI/CD y DevOps
 
-- **[SUPABASE_SETUP.md](./setup/SUPABASE_SETUP.md)**: Guía completa de configuración de Supabase (PostgreSQL, Auth, Storage, RLS)
-- **[DATABASE_EXECUTION_GUIDE.md](./setup/DATABASE_EXECUTION_GUIDE.md)**: Instrucciones paso a paso para ejecutar el schema de base de datos
-- **[examples_supabase_usage.py](./setup/examples_supabase_usage.py)**: Ejemplos de uso de los módulos de Supabase (Auth, Storage, Client)
+Documentación completa del pipeline de integración y despliegue continuo.
 
-### 🗄️ [database/](./database/)
+- **[CI_CD_PIPELINE.md](./CI_CD_PIPELINE.md)**: 📖 Guía completa del pipeline CI/CD con GitHub Actions
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)**: 📦 Guía de despliegue a producción (Azure, AWS, Vercel)
+- **[../CI_CD_SETUP_SUMMARY.md](../CI_CD_SETUP_SUMMARY.md)**: 📊 Resumen de configuración del CI/CD
+- **[../QUICK_START_CI_CD.md](../QUICK_START_CI_CD.md)**: ⚡ Quick start de CI/CD en 5 minutos
+
+### 💾 Database
+
 Scripts SQL y diseño de base de datos.
 
 - **[DATABASE_DESIGN.md](./database/DATABASE_DESIGN.md)**: Diseño conceptual y lógico de la base de datos (35+ tablas)
 - **[database_schema.sql](./database/database_schema.sql)**: Script SQL completo con el schema de base de datos
 - **[rls_policies.sql](./database/rls_policies.sql)**: Políticas de Row Level Security para aislamiento multi-tenant
 - **[storage_policies.sql](./database/storage_policies.sql)**: Políticas de acceso para buckets de Supabase Storage
+- **[verify_rls.sql](./database/verify_rls.sql)**: Scripts de verificación de RLS
+
+### 📦 Setup
+
+Guías de configuración e instalación del sistema.
+
+- **[SUPABASE_SETUP.md](./setup/SUPABASE_SETUP.md)**: Guía completa de configuración de Supabase (PostgreSQL, Auth, Storage, RLS)
+- **[DATABASE_EXECUTION_GUIDE.md](./setup/DATABASE_EXECUTION_GUIDE.md)**: Instrucciones paso a paso para ejecutar el schema de base de datos
+- **[examples_supabase_usage.py](./setup/examples_supabase_usage.py)**: Ejemplos de uso de los módulos de Supabase (Auth, Storage, Client)
 - **[verify_rls.sql](./database/verify_rls.sql)**: Script de verificación de políticas RLS
 
 ### 🔒 [security/](./security/)

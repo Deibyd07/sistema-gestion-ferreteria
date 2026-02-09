@@ -1,11 +1,11 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 💬 Discusiones y Preguntas
-    url: https://github.com/Deibyd07/Proyecto-Ferreteria/discussions
-    about: Haz preguntas, comparte ideas o discute con la comunidad
+  - name: 💬 GitHub Discussions
+    url: https://github.com/tu-usuario/sistema-gestion-ferreteria/discussions
+    about: Para preguntas, ideas y discusiones generales
   - name: 📚 Documentación
-    url: https://github.com/Deibyd07/Proyecto-Ferreteria/tree/main/docs
-    about: Lee la documentación completa del proyecto
-  - name: 🚀 Guía de Contribución
-    url: https://github.com/Deibyd07/Proyecto-Ferreteria/blob/main/CONTRIBUTING.md
-    about: Aprende cómo contribuir al proyecto
+    url: https://github.com/tu-usuario/sistema-gestion-ferreteria/tree/main/docs
+    about: Consulta la documentación del proyecto
+  - name: 🐛 Security Issues
+    url: https://github.com/tu-usuario/sistema-gestion-ferreteria/security/advisories/new
+    about: Para reportar vulnerabilidades de seguridad (privado)

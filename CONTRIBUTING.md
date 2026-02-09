@@ -1,653 +1,895 @@
 # 🤝 Guía de Contribución
 
-¡Gracias por tu interés en contribuir al Sistema de Gestión para Ferreterías! Este documento te guiará a través del proceso de contribución.
+¡Gracias por tu interés en contribuir al Sistema de Gestión para Ferreterías! Esta guía te ayudará a hacer tu primera contribución de manera exitosa.
 
 ## 📋 Tabla de Contenidos
 
 - [Código de Conducta](#código-de-conducta)
-- [¿Cómo Puedo Contribuir?](#cómo-puedo-contribuir)
-- [Configuración del Entorno](#configuración-del-entorno)
+- [Cómo Contribuir](#cómo-contribuir)
 - [Flujo de Trabajo](#flujo-de-trabajo)
+- [Configuración del Entorno](#configuración-del-entorno)
 - [Estándares de Código](#estándares-de-código)
 - [Proceso de Pull Request](#proceso-de-pull-request)
-- [Metodología Scrum](#metodología-scrum)
-- [Reportar Bugs](#reportar-bugs)
-- [Proponer Nuevas Características](#proponer-nuevas-características)
+- [Revisión de Código](#revisión-de-código)
+- [Tipos de Contribuciones](#tipos-de-contribuciones)
 
-## 📜 Código de Conducta
+## 🎯 Código de Conducta
 
-Este proyecto adhiere a un Código de Conducta. Al participar, se espera que lo respetes. Lee [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) para más detalles.
+### Nuestros Principios
 
-## 🎯 ¿Cómo Puedo Contribuir?
+- **Respeto:** Tratamos a todos con respeto y profesionalismo
+- **Colaboración:** Trabajamos juntos para mejorar el proyecto
+- **Calidad:** Nos esforzamos por mantener altos estándares de código
+- **Aprendizaje:** Fomentamos el aprendizaje continuo
+- **Inclusión:** Todos son bienvenidos a contribuir
 
-Hay muchas formas de contribuir a este proyecto:
+### Comportamiento Esperado
 
-### 1. Reportar Bugs
+✅ **SÍ hacer:**
+- Ser respetuoso y profesional
+- Proporcionar feedback constructivo
+- Aceptar críticas constructivas
+- Enfocarse en lo mejor para el proyecto
+- Ayudar a otros miembros
 
-- Usa la plantilla de issue para bugs
-- Incluye toda la información solicitada
-- Agrega capturas de pantalla si es posible
+❌ **NO hacer:**
+- Usar lenguaje ofensivo o inapropiado
+- Ataques personales o trolling
+- Compartir información privada de otros
+- Conducta poco profesional
+- Spam o autopromoción
 
-### 2. Proponer Nuevas Características
+## 🚀 Cómo Contribuir
 
-- Usa la plantilla de issue para features
-- Describe claramente el problema que resuelve
-- Explica cómo beneficia al proyecto
+### 1. Encuentra algo en qué trabajar
 
-### 3. Mejorar Documentación
+Puedes contribuir de varias formas:
 
-- Corrige errores tipográficos
-- Mejora explicaciones existentes
-- Agrega ejemplos de uso
-- Traduce documentación
+- 🐛 **Bugs:** Busca issues con label `bug`
+- ✨ **Features:** Busca issues con label `feature`
+- 📚 **Documentación:** Busca issues con label `docs`
+- 🧪 **Tests:** Mejora la cobertura de tests
+- 🎨 **UI/UX:** Mejoras en la interfaz
 
-### 4. Contribuir Código
+**Para principiantes:**
+Busca issues con label `good first issue` o `help wanted`
 
-- Elige un issue existente o propón uno nuevo
-- Sigue la estrategia de branching
-- Escribe tests para tu código
-- Actualiza la documentación
+### 2. Comunica tus intenciones
 
-### 5. Revisar Pull Requests
+Antes de empezar a trabajar:
 
-- Revisa el código de otros contribuyentes
-- Proporciona feedback constructivo
-- Prueba los cambios localmente
+1. Comenta en el issue que quieres trabajar en él
+2. Si no existe issue, crea uno describiendo el problema/feature
+3. Espera confirmación del maintainer antes de empezar
 
-## 🛠️ Configuración del Entorno
+**Ejemplo de comentario:**
+```
+Hola! Me gustaría trabajar en este issue. 
+Mi approach sería:
+1. [Describe tu enfoque]
+2. [Pasos a seguir]
 
-### Prerrequisitos
-
-Antes de comenzar, asegúrate de tener configurado:
-
-1. **Git** configurado con tu información:
-   ```bash
-   git config --global user.name "Tu Nombre"
-   git config --global user.email "tu@email.com"
-   ```
-
-2. **Entorno de desarrollo** completo (sigue [INSTALLATION.md](INSTALLATION.md))
-
-3. **Fork del repositorio** en tu cuenta de GitHub
-
-### Clonar tu Fork
-
-```bash
-# Clona tu fork
-git clone https://github.com/TU_USERNAME/Proyecto-Ferreteria.git
-cd Proyecto-Ferreteria
-
-# Agrega el repositorio original como remote
-git remote add upstream https://github.com/Deibyd07/Proyecto-Ferreteria.git
-
-# Verifica los remotes
-git remote -v
+¿Les parece bien este enfoque?
 ```
 
 ## 🔄 Flujo de Trabajo
 
-Seguimos una estrategia de branching basada en épicas. Lee [BRANCHING_STRATEGY.md](docs/project/BRANCHING_STRATEGY.md) para detalles completos.
+### Diagrama del Flujo
 
-### Resumen del Flujo
+```
+┌─────────────────────────────────────────────────────────┐
+│  1. Fork del repositorio                                │
+└────────────────┬────────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────────┐
+│  2. Clonar tu fork localmente                           │
+│     git clone https://github.com/tu-usuario/repo.git    │
+└────────────────┬────────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────────┐
+│  3. Crear rama desde develop                            │
+│     git checkout -b feature/mi-feature                  │
+└────────────────┬────────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────────┐
+│  4. Hacer cambios y commits                             │
+│     git add .                                           │
+│     git commit -m "feat: descripción del cambio"        │
+└────────────────┬────────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────────┐
+│  5. Mantener rama actualizada                           │
+│     git fetch upstream                                  │
+│     git merge upstream/develop                          │
+└────────────────┬────────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────────┐
+│  6. Push a tu fork                                      │
+│     git push origin feature/mi-feature                  │
+└────────────────┬────────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────────┐
+│  7. Crear Pull Request                                  │
+│     • Completar template                                │
+│     • Linkar issues relacionados                        │
+└────────────────┬────────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────────┐
+│  8. CI/CD automático ejecuta                            │
+│     • Linting                                           │
+│     • Tests                                             │
+│     • Security scan                                     │
+└────────────────┬────────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────────┐
+│  9. Code Review                                         │
+│     • Reviewer revisa cambios                           │
+│     • Feedback y solicitud de cambios                   │
+└────────────────┬────────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────────┐
+│  10. Aplicar feedback                                   │
+│      git add .                                          │
+│      git commit -m "fix: aplicar feedback de review"    │
+│      git push                                           │
+└────────────────┬────────────────────────────────────────┘
+                 │
+┌────────────────▼────────────────────────────────────────┐
+│  11. Aprobación y Merge                                 │
+│      • Squash and merge                                 │
+│      • Delete branch automático                         │
+└─────────────────────────────────────────────────────────┘
+```
 
-1. **Sincroniza tu fork**:
-   ```bash
-   git checkout main
-   git fetch upstream
-   git merge upstream/main
-   git push origin main
-   ```
+### Paso a Paso Detallado
 
-2. **Revisa el Sprint actual** en el [Project Board](https://github.com/Deibyd07/Proyecto-Ferreteria/projects)
+#### 1️⃣ Fork y Clone
 
-3. **Elige un issue asignado al Sprint**:
-   - Issues etiquetados con `good first issue` son buenos para principiantes
-   - Comenta en el issue que vas a trabajar en él
-   - Espera confirmación del Scrum Master o Product Owner
+```bash
+# 1. Hacer fork del repo en GitHub (botón "Fork")
 
-4. **Crea tu rama** desde la rama de la épica correspondiente:
-   ```bash
-   # Obtén la rama de la épica
-   git fetch upstream
-   git checkout epic/N-nombre-epica
-   
-   # Crea tu rama de trabajo
-   git checkout -b feature/issue-123-descripcion-corta
-   # o
-   git checkout -b fix/issue-124-descripcion-corta
-   ```
+# 2. Clonar tu fork
+git clone https://github.com/TU_USUARIO/sistema-gestion-ferreteria.git
+cd sistema-gestion-ferreteria
 
-5. **Desarrolla tu solución**:
-   ```bash
-   # Haz tus cambios
-   # Agrega commits siguiendo Conventional Commits
-   git add .
-   git commit -m "feat: agregar validación de inventario"
-   ```
+# 3. Agregar upstream (repositorio original)
+git remote add upstream https://github.com/OWNER/sistema-gestion-ferreteria.git
 
-6. **Mantén tu rama actualizada**:
-   ```bash
-   # Regularmente sincroniza con la épica
-   git fetch upstream
-   git rebase upstream/epic/N-nombre-epica
-   ```
+# 4. Verificar remotes
+git remote -v
+# origin    https://github.com/TU_USUARIO/sistema-gestion-ferreteria.git (fetch)
+# origin    https://github.com/TU_USUARIO/sistema-gestion-ferreteria.git (push)
+# upstream  https://github.com/OWNER/sistema-gestion-ferreteria.git (fetch)
+# upstream  https://github.com/OWNER/sistema-gestion-ferreteria.git (push)
+```
 
-7. **Push y crea Pull Request**:
-   ```bash
-   git push origin feature/issue-123-descripcion-corta
-   ```
-   - Ve a GitHub y crea el PR hacia la rama de la épica
-   - Usa la plantilla de PR
-   - Solicita revisión
+#### 2️⃣ Crear Rama
 
-## 💻 Estándares de Código
+```bash
+# 1. Asegurarte de estar en develop actualizado
+git checkout develop
+git pull upstream develop
 
-### Principios Generales
+# 2. Crear nueva rama
+git checkout -b feature/nombre-descriptivo
 
-- **DRY** (Don't Repeat Yourself): No dupliques código
-- **KISS** (Keep It Simple, Stupid): Mantén el código simple
-- **SOLID**: Sigue los principios SOLID de diseño
-- **Clean Code**: Código limpio y legible
+# Convenciones de nombres de rama:
+# - feature/...  -> Nueva funcionalidad
+# - fix/...      -> Corrección de bug
+# - docs/...     -> Cambios en documentación
+# - test/...     -> Agregar o modificar tests
+# - refactor/... -> Refactorización
+# - chore/...    -> Tareas de mantenimiento
+```
+
+#### 3️⃣ Hacer Cambios
+
+```bash
+# 1. Hacer tus cambios en los archivos
+
+# 2. Verificar qué cambió
+git status
+git diff
+
+# 3. Agregar cambios al staging
+git add .
+# O selectivamente:
+git add archivo1.py archivo2.ts
+
+# 4. Commit con mensaje descriptivo
+git commit -m "feat: agregar endpoint de usuarios"
+
+# Formato de mensajes de commit:
+# tipo(scope opcional): descripción corta
+#
+# Cuerpo opcional más detallado
+#
+# Footer opcional (issues, breaking changes)
+```
+
+#### 4️⃣ Mantener Actualizado
+
+```bash
+# Periódicamente (y antes de crear PR):
+git fetch upstream
+git merge upstream/develop
+
+# Si hay conflictos:
+# 1. Resolver manualmente
+# 2. git add .
+# 3. git commit
+```
+
+#### 5️⃣ Validar Localmente
+
+```bash
+# BACKEND
+cd backend
+
+# Formatear
+black .
+
+# Linting
+ruff check .
+
+# Type checking
+mypy app/
+
+# Tests
+pytest tests/backend/ -v
+
+# Coverage
+pytest tests/backend/ --cov=backend/app --cov-report=term
+
+# ===================================
+
+# FRONTEND
+cd frontend
+
+# Linting
+npm run lint
+
+# Formatear
+npm run format
+
+# Type check
+npm run type-check
+
+# Tests
+npm test
+
+# Build
+npm run build
+```
+
+#### 6️⃣ Push y Pull Request
+
+```bash
+# 1. Push a tu fork
+git push origin feature/nombre-descriptivo
+
+# 2. Ir a GitHub y crear Pull Request
+# 3. Completar template de PR
+# 4. Linkar issues relacionados
+# 5. Solicitar reviewers
+```
+
+## ⚙️ Configuración del Entorno
 
 ### Backend (Python/FastAPI)
 
-#### Estilo de Código
+```bash
+# 1. Navegar al directorio backend
+cd backend
 
-Seguimos [PEP 8](https://pep8.org/) con algunos ajustes:
+# 2. Crear entorno virtual
+python -m venv venv
 
-```python
-# Usa 4 espacios para indentación
-# Longitud máxima de línea: 88 caracteres (Black formatter)
-# Usa comillas dobles para strings
+# 3. Activar entorno virtual
+# Windows
+venv\Scripts\activate
+# Linux/Mac
+source venv/bin/activate
 
-# ✅ Bueno
-def calculate_total_price(
-    quantity: int,
-    unit_price: Decimal,
-    tax_rate: float = 0.16
-) -> Decimal:
-    """
-    Calcula el precio total incluyendo impuestos.
-    
-    Args:
-        quantity: Cantidad de productos
-        unit_price: Precio unitario del producto
-        tax_rate: Tasa de impuesto (default: 16%)
-    
-    Returns:
-        Precio total con impuestos
-    """
-    subtotal = quantity * unit_price
-    tax = subtotal * Decimal(str(tax_rate))
-    return subtotal + tax
+# 4. Instalar dependencias
+pip install -r requirements.txt
 
-# ❌ Malo
-def calc(q,p,t=0.16):
-    return q*p*(1+t)
+# 5. Crear archivo .env
+cp .env.example .env
+# Editar .env con tus credenciales
+
+# 6. Verificar instalación
+python -m pytest tests/backend/ -v
 ```
 
-#### Estructura de Archivos
+### Frontend (Next.js/TypeScript)
+
+```bash
+# 1. Navegar al directorio frontend
+cd frontend
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Crear archivo .env.local
+cp .env.example .env.local
+# Editar .env.local con tus credenciales
+
+# 4. Ejecutar en modo desarrollo
+npm run dev
+
+# 5. Abrir en navegador
+# http://localhost:3000
+
+# 6. Verificar tests
+npm test
+```
+
+### Supabase Setup
+
+1. Crear cuenta en [Supabase](https://supabase.com)
+2. Crear nuevo proyecto
+3. Obtener credenciales:
+   - Project URL
+   - Anon/Public Key
+   - Service Role Key (para backend)
+4. Ejecutar SQL schema:
+   ```bash
+   # Copiar contenido de docs/database/database_schema.sql
+   # Pegar en Supabase SQL Editor
+   ```
+
+## 📝 Estándares de Código
+
+### Python (Backend)
+
+#### Code Style
 
 ```python
-# 1. Imports estándar de Python
-import os
-from datetime import datetime
-from typing import Optional
+# ✅ BIEN: Usar Black format
+def get_user_by_email(email: str) -> Optional[User]:
+    """
+    Obtiene un usuario por su email.
+    
+    Args:
+        email: Email del usuario
+        
+    Returns:
+        Usuario si existe, None si no
+    """
+    return db.query(User).filter(User.email == email).first()
 
-# 2. Imports de terceros
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
 
-# 3. Imports locales
-from app.core.security import get_current_user
-from app.schemas.product import ProductCreate, ProductResponse
-from app.services.product_service import ProductService
+# ❌ MAL: Sin format, sin types, sin docstring
+def getUserByEmail(email):
+    return db.query(User).filter(User.email==email).first()
 ```
 
 #### Type Hints
 
-Usa type hints en todas las funciones:
-
 ```python
-from typing import List, Optional
-from decimal import Decimal
+# ✅ BIEN: Usar type hints
+from typing import Optional, List
+from pydantic import BaseModel
 
-def get_products(
+def get_users(
     skip: int = 0,
     limit: int = 100,
-    search: Optional[str] = None
-) -> List[ProductResponse]:
-    pass
+    filter_active: bool = True
+) -> List[User]:
+    """Get paginated users list."""
+    query = db.query(User)
+    if filter_active:
+        query = query.filter(User.is_active == True)
+    return query.offset(skip).limit(limit).all()
+
+
+# ❌ MAL: Sin type hints
+def get_users(skip=0, limit=100, filter_active=True):
+    query = db.query(User)
+    if filter_active:
+        query = query.filter(User.is_active == True)
+    return query.offset(skip).limit(limit).all()
 ```
 
-#### Docstrings
-
-Usa Google style docstrings:
+#### Error Handling
 
 ```python
-def calculate_discount(
-    price: Decimal,
-    discount_percentage: float
-) -> Decimal:
-    """
-    Calcula el precio con descuento aplicado.
-    
-    Args:
-        price: Precio original del producto
-        discount_percentage: Porcentaje de descuento (0-100)
-    
-    Returns:
-        Precio con descuento aplicado
-        
-    Raises:
-        ValueError: Si el descuento es negativo o mayor a 100
-        
-    Example:
-        >>> calculate_discount(Decimal("100.00"), 10)
-        Decimal("90.00")
-    """
-    if discount_percentage < 0 or discount_percentage > 100:
-        raise ValueError("Discount must be between 0 and 100")
-    
-    discount_amount = price * Decimal(str(discount_percentage / 100))
-    return price - discount_amount
+# ✅ BIEN: Manejo específico de errores
+from fastapi import HTTPException, status
+
+@router.get("/users/{user_id}")
+async def get_user(user_id: int) -> User:
+    try:
+        user = await user_service.get_by_id(user_id)
+        if not user:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"User with id {user_id} not found"
+            )
+        return user
+    except DatabaseError as e:
+        logger.error(f"Database error getting user {user_id}: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Error accessing database"
+        )
+
+
+# ❌ MAL: Errores genéricos
+@router.get("/users/{user_id}")
+async def get_user(user_id: int):
+    try:
+        user = await user_service.get_by_id(user_id)
+        return user
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 ```
 
-#### Herramientas de Linting
+### TypeScript/React (Frontend)
 
-```bash
-# Instala las herramientas
-pip install black isort flake8 mypy
-
-# Formatea código con Black
-black .
-
-# Ordena imports
-isort .
-
-# Verifica estilo con Flake8
-flake8 .
-
-# Verifica tipos con MyPy
-mypy .
-```
-
-### Frontend (TypeScript/Next.js)
-
-#### Estilo de Código
-
-Seguimos [Airbnb Style Guide](https://github.com/airbnb/javascript) con TypeScript:
+#### Component Structure
 
 ```typescript
-// Usa 2 espacios para indentación
-// Usa comillas simples para strings
-// Usa punto y coma
-
-// ✅ Bueno
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  stock: number;
-}
-
-export const calculateTotal = (
-  products: Product[],
-  taxRate: number = 0.16
-): number => {
-  const subtotal = products.reduce((sum, product) => {
-    return sum + (product.price * product.stock);
-  }, 0);
-  
-  return subtotal * (1 + taxRate);
-};
-
-// ❌ Malo
-export const calc = (p: any, t: any) => {
-  return p.reduce((s: any, x: any) => s + x.price * x.stock, 0) * (1 + t);
-};
-```
-
-#### Componentes de React
-
-```typescript
-// Usa functional components con TypeScript
+// ✅ BIEN: Functional component con TypeScript
 import { FC } from 'react';
 
-interface ProductCardProps {
-  product: Product;
-  onAddToCart: (productId: string) => void;
+interface UserCardProps {
+  user: {
+    id: number;
+    name: string;
+    email: string;
+  };
+  onEdit?: (id: number) => void;
 }
 
-export const ProductCard: FC<ProductCardProps> = ({ 
-  product, 
-  onAddToCart 
-}) => {
-  const handleClick = () => {
-    onAddToCart(product.id);
+export const UserCard: FC<UserCardProps> = ({ user, onEdit }) => {
+  const handleEdit = () => {
+    if (onEdit) {
+      onEdit(user.id);
+    }
   };
 
   return (
-    <div className="product-card">
-      <h3>{product.name}</h3>
-      <p>${product.price.toFixed(2)}</p>
-      <button onClick={handleClick}>
-        Agregar al carrito
-      </button>
+    <div className="user-card">
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+      {onEdit && (
+        <button onClick={handleEdit}>Edit</button>
+      )}
     </div>
   );
 };
+
+
+// ❌ MAL: Sin tipos, props desestructuradas incorrectamente
+export default function UserCard(props) {
+  return (
+    <div className="user-card">
+      <h3>{props.user.name}</h3>
+      <p>{props.user.email}</p>
+      <button onClick={() => props.onEdit(props.user.id)}>Edit</button>
+    </div>
+  );
+}
 ```
 
-#### Nombres de Archivos
-
-- Componentes: `PascalCase.tsx` (ej: `ProductCard.tsx`)
-- Utilidades: `camelCase.ts` (ej: `formatCurrency.ts`)
-- Hooks: `useCamelCase.ts` (ej: `useProducts.ts`)
-- Tipos: `types.ts` o `index.ts` en su carpeta
-
-#### Herramientas de Linting
-
-```bash
-# Verifica código
-npm run lint
-
-# Corrige automáticamente
-npm run lint:fix
-
-# Verifica tipos
-npm run type-check
-```
-
-### Git Commits
-
-Usa [Conventional Commits](https://www.conventionalcommits.org/):
-
-```bash
-# Formato
-<tipo>(<alcance>): <descripción>
-
-# Tipos:
-# feat: Nueva característica
-# fix: Corrección de bug
-# docs: Cambios en documentación
-# style: Formato, sin cambios de código
-# refactor: Refactorización de código
-# test: Agregar o modificar tests
-# chore: Mantenimiento, dependencias
-
-# Ejemplos:
-git commit -m "feat(products): agregar filtro por categoría"
-git commit -m "fix(auth): corregir validación de token expirado"
-git commit -m "docs(readme): actualizar guía de instalación"
-git commit -m "test(inventory): agregar tests para actualización de stock"
-```
-
-### Tests
-
-#### Backend (pytest)
-
-```python
-# tests/test_products.py
-import pytest
-from decimal import Decimal
-
-def test_calculate_discount():
-    """Test para calcular descuento correctamente."""
-    price = Decimal("100.00")
-    discount = 10
-    
-    result = calculate_discount(price, discount)
-    
-    assert result == Decimal("90.00")
-
-def test_calculate_discount_invalid():
-    """Test para validar descuento inválido."""
-    price = Decimal("100.00")
-    
-    with pytest.raises(ValueError):
-        calculate_discount(price, -10)
-```
-
-Ejecuta tests:
-```bash
-# Ejecutar todos los tests
-pytest
-
-# Con coverage
-pytest --cov=app --cov-report=html
-
-# Test específico
-pytest tests/test_products.py::test_calculate_discount
-```
-
-#### Frontend (Jest/Testing Library)
+#### Custom Hooks
 
 ```typescript
-// __tests__/ProductCard.test.tsx
-import { render, screen, fireEvent } from '@testing-library/react';
-import { ProductCard } from '@/components/ProductCard';
+// ✅ BIEN: Custom hook con TypeScript
+import { useState, useEffect } from 'react';
 
-describe('ProductCard', () => {
-  const mockProduct = {
-    id: '1',
-    name: 'Martillo',
-    price: 250.00,
-    stock: 10
+interface UseUserReturn {
+  user: User | null;
+  loading: boolean;
+  error: Error | null;
+  refetch: () => Promise<void>;
+}
+
+export const useUser = (userId: number): UseUserReturn => {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  const fetchUser = async () => {
+    try {
+      setLoading(true);
+      const data = await apiClient.getUser(userId);
+      setUser(data);
+      setError(null);
+    } catch (err) {
+      setError(err as Error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  it('renderiza el producto correctamente', () => {
-    render(
-      <ProductCard 
-        product={mockProduct} 
-        onAddToCart={jest.fn()} 
-      />
-    );
+  useEffect(() => {
+    fetchUser();
+  }, [userId]);
 
-    expect(screen.getByText('Martillo')).toBeInTheDocument();
-    expect(screen.getByText('$250.00')).toBeInTheDocument();
-  });
+  return { user, loading, error, refetch: fetchUser };
+};
 
-  it('llama onAddToCart al hacer clic', () => {
-    const handleAddToCart = jest.fn();
-    
-    render(
-      <ProductCard 
-        product={mockProduct} 
-        onAddToCart={handleAddToCart} 
-      />
-    );
 
-    fireEvent.click(screen.getByText('Agregar al carrito'));
-    expect(handleAddToCart).toHaveBeenCalledWith('1');
-  });
-});
+// ❌ MAL: Sin tipos, sin manejo de errores
+export const useUser = (userId) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    apiClient.getUser(userId).then(data => {
+      setUser(data);
+      setLoading(false);
+    });
+  }, [userId]);
+
+  return { user, loading };
+};
 ```
 
-Ejecuta tests:
-```bash
-# Ejecutar todos los tests
-npm test
+### Testing
 
-# Watch mode
-npm test -- --watch
+#### Backend Tests (pytest)
 
-# Con coverage
-npm test -- --coverage
+```python
+# ✅ BIEN: Test descriptivo con setup y assertions claras
+import pytest
+from fastapi.testclient import TestClient
+
+def test_create_user_success(client: TestClient, db_session):
+    """
+    Given: Datos válidos de usuario
+    When: POST /api/users/
+    Then: Usuario creado con status 201
+    """
+    # Arrange
+    user_data = {
+        "email": "test@example.com",
+        "name": "Test User",
+        "password": "SecurePass123!"
+    }
+    
+    # Act
+    response = client.post("/api/users/", json=user_data)
+    
+    # Assert
+    assert response.status_code == 201
+    data = response.json()
+    assert data["email"] == user_data["email"]
+    assert data["name"] == user_data["name"]
+    assert "password" not in data  # No exponer password
+    assert "id" in data
+
+
+# ❌ MAL: Test sin estructura, sin docstring
+def test_user(client):
+    response = client.post("/api/users/", json={"email": "test@example.com"})
+    assert response.status_code == 201
+```
+
+#### Frontend Tests (Jest + RTL)
+
+```typescript
+// ✅ BIEN: Test con setup y casos claros
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { UserCard } from './UserCard';
+
+describe('UserCard', () => {
+  const mockUser = {
+    id: 1,
+    name: 'John Doe',
+    email: 'john@example.com'
+  };
+
+  it('should render user information', () => {
+    render(<UserCard user={mockUser} />);
+    
+    expect(screen.getByText('John Doe')).toBeInTheDocument();
+    expect(screen.getByText('john@example.com')).toBeInTheDocument();
+  });
+
+  it('should call onEdit with user id when edit button clicked', () => {
+    const mockOnEdit = jest.fn();
+    render(<UserCard user={mockUser} onEdit={mockOnEdit} />);
+    
+    const editButton = screen.getByRole('button', { name: /edit/i });
+    fireEvent.click(editButton);
+    
+    expect(mockOnEdit).toHaveBeenCalledWith(1);
+    expect(mockOnEdit).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not render edit button when onEdit not provided', () => {
+    render(<UserCard user={mockUser} />);
+    
+    expect(screen.queryByRole('button', { name: /edit/i })).not.toBeInTheDocument();
+  });
+});
+
+
+// ❌ MAL: Test sin describe, sin casos específicos
+it('works', () => {
+  render(<UserCard user={{id: 1, name: 'John', email: 'john@example.com'}} />);
+  expect(screen.getByText('John')).toBeInTheDocument();
+});
 ```
 
 ## 🔍 Proceso de Pull Request
 
-### Antes de Crear el PR
+### 1. Antes de Crear el PR
 
-- [ ] Tu código compila sin errores
-- [ ] Todos los tests pasan
-- [ ] Has agregado tests para tu código nuevo
-- [ ] Has actualizado la documentación
-- [ ] Tu código sigue los estándares de estilo
-- [ ] Has hecho rebase con la rama de la épica
-- [ ] Los commits siguen Conventional Commits
+**Checklist:**
+- [ ] Código formateado (Black/Prettier)
+- [ ] Linting pasando (Ruff/ESLint)
+- [ ] Type checking pasando (MyPy/TypeScript)
+- [ ] Tests escritos para nuevo código
+- [ ] Todos los tests pasando localmente
+- [ ] Coverage > 80%
+- [ ] Documentación actualizada
+- [ ] Rama actualizada con develop
 
-### Crear el Pull Request
+```bash
+# Ejecutar checklist completo
 
-1. **Push a tu fork**:
+# Backend
+cd backend
+black . && \
+ruff check . && \
+mypy app/ && \
+pytest tests/backend/ --cov=backend/app --cov-report=term
+
+# Frontend
+cd frontend
+npm run lint && \
+npm run type-check && \
+npm test && \
+npm run build
+```
+
+### 2. Crear el Pull Request
+
+1. **Push a tu fork:**
    ```bash
-   git push origin feature/issue-123-descripcion
+   git push origin feature/tu-feature
    ```
 
-2. **Abre el PR** en GitHub hacia la rama de la épica (no hacia `main`)
+2. **Ir a GitHub** y hacer click en "Compare & pull request"
 
-3. **Usa la plantilla de PR** y completa toda la información:
-   - Descripción del cambio
-   - Número de issue relacionado
-   - Tipo de cambio
-   - Checklist
-
-4. **Asigna revisores**:
-   - Solicit revisión del Scrum Master o equipo designado
-   - Asigna labels apropiados
-
-5. **Responde a los comentarios**:
-   - Lee todos los comentarios de revisión
-   - Haz los cambios solicitados
-   - Responde a preguntas
-   - Marca conversaciones como resueltas cuando corresponda
-
-### Criterios de Aceptación del PR
-
-Tu PR será aceptado cuando:
-
-- ✅ Al menos 2 revisores lo aprueben (o 1 para cambios menores)
-- ✅ Todos los tests de CI/CD pasen
-- ✅ No haya conflictos con la rama base
-- ✅ El código cumpla con los estándares
-- ✅ La documentación esté actualizada
-
-## 🏃 Metodología Scrum
-
-Este proyecto usa Scrum. Lee [SCRUM_GUIDE.md](docs/project/SCRUM_GUIDE.md) para detalles completos.
-
-### Roles
-
-- **Product Owner**: Define las funcionalidades y prioridades
-- **Scrum Master**: Facilita el proceso y remueve impedimentos
-- **Development Team**: Todos los contribuyentes (¡tú!)
-
-### Eventos
-
-- **Sprint Planning**: Inicio de cada Sprint (cada 2 semanas)
-- **Daily Standup**: Opcional para contribuyentes (comunicación asíncrona en GitHub)
-- **Sprint Review**: Final del Sprint, demo de funcionalidades
-- **Sprint Retrospective**: Mejora continua del proceso
-
-### Artifacts
-
-- **Product Backlog**: Todos los issues del proyecto
-- **Sprint Backlog**: Issues del Sprint actual
-- **Increment**: Código funcional al final del Sprint
-
-### Cómo Participar
-
-1. **Revisa el Sprint actual** en el [Project Board](https://github.com/Deibyd07/Proyecto-Ferreteria/projects)
-2. **Participa en Sprint Planning** (anunciado en Discussions)
-3. **Elige tareas del Sprint Backlog**
-4. **Actualiza el progreso** moviendo issues en el board
-5. **Participa en Sprint Review** demostrando tu trabajo
-
-## 🐛 Reportar Bugs
-
-### Antes de Reportar
-
-1. **Busca en issues existentes** para evitar duplicados
-2. **Verifica que sea un bug real** y no configuración incorrecta
-3. **Prueba en la última versión** del código
-
-### Cómo Reportar
-
-1. Usa la plantilla de issue para bugs
-2. Incluye:
-   - Descripción clara del problema
-   - Pasos para reproducir
-   - Comportamiento esperado vs. actual
-   - Screenshots/videos si es posible
-   - Versiones de software
-   - Logs de errores
-
-Ejemplo:
+3. **Completar el template:**
 
 ```markdown
-**Descripción**
-El formulario de productos no valida stock negativo
+## 📝 Descripción
 
-**Pasos para Reproducir**
-1. Ir a Productos > Nuevo Producto
-2. Ingresar stock: -5
-3. Hacer clic en Guardar
+Breve descripción de los cambios realizados.
 
-**Comportamiento Esperado**
-Debería mostrar error: "El stock no puede ser negativo"
+## 🎯 Tipo de cambio
 
-**Comportamiento Actual**
-Guarda el producto con stock -5
+- [ ] 🐛 Bug fix (non-breaking change que corrige un issue)
+- [x] ✨ Nueva feature (non-breaking change que agrega funcionalidad)
+- [ ] 💥 Breaking change (fix o feature que causa que funcionalidad existente no funcione como se esperaba)
+- [ ] 📝 Documentación
+- [ ] 🎨 Mejora de UI/UX
+
+## 🔗 Issues relacionados
+
+Closes #123
+Related to #456
+
+## ✅ Checklist
+
+- [x] Mi código sigue las guías de estilo del proyecto
+- [x] He realizado una auto-revisión de mi código
+- [x] He comentado mi código en áreas difíciles de entender
+- [x] He actualizado la documentación correspondiente
+- [x] Mis cambios no generan nuevos warnings
+- [x] He agregado tests que prueban que mi fix es efectivo o mi feature funciona
+- [x] Tests nuevos y existentes pasan localmente
+- [x] Coverage de código se mantiene o mejora
+
+## 📸 Screenshots (si aplica)
+
+[Agregar screenshots si hay cambios visuales]
+
+## 🧪 Cómo probar
+
+1. Paso 1...
+2. Paso 2...
+3. Verificar que...
+
+## 📝 Notas adicionales
+
+Cualquier información adicional para los reviewers.
+```
+
+### 3. Durante el Review
+
+#### Para el Autor:
+
+- ✅ Responder a comentarios prontamente
+- ✅ Hacer cambios solicitados
+- ✅ Marcar conversaciones como resueltas
+- ✅ Mantener la rama actualizada
+- ✅ Agradecer el feedback
+
+```bash
+# Aplicar feedback
+git add .
+git commit -m "fix: aplicar feedback del review"
+git push origin feature/tu-feature
+```
+
+#### Para el Reviewer:
+
+- ✅ Revisar en las primeras 24 horas
+- ✅ Ser constructivo y específico
+- ✅ Sugerir mejoras, no solo criticar
+- ✅ Aprobar si todo está bien
+- ✅ Explicar el razonamiento de cambios solicitados
+
+**Ejemplo de comentario constructivo:**
+```markdown
+❌ MAL:
+"Este código está mal"
+
+✅ BIEN:
+"Sugiero usar un try-catch aquí para manejar el caso cuando el usuario no existe. 
+Algo como:
+
+```python
+try:
+    user = get_user(id)
+except UserNotFound:
+    raise HTTPException(status_code=404, detail="User not found")
+```
+
+Esto mejora la experiencia del usuario con errores más descriptivos."
+```
+
+### 4. Merge
+
+Una vez aprobado:
+
+1. **Squash and merge** (recomendado)
+   - Combina todos los commits en uno
+   - Mantiene historial limpio
+
+2. **Delete branch** automático después del merge
+
+3. **Update local:**
+   ```bash
+   git checkout develop
+   git pull upstream develop
+   git branch -d feature/tu-feature  # Eliminar rama local
+   ```
+
+## 🎨 Tipos de Contribuciones
+
+### 🐛 Reportar Bugs
+
+1. Buscar si el bug ya fue reportado
+2. Si no existe, crear nuevo issue con template:
+
+```markdown
+**Descripción del bug**
+Descripción clara y concisa del bug.
+
+**Pasos para reproducir**
+1. Ir a '...'
+2. Click en '....'
+3. Scroll down to '....'
+4. Ver error
+
+**Comportamiento esperado**
+Lo que esperabas que sucediera.
+
+**Comportamiento actual**
+Lo que realmente sucede.
 
 **Screenshots**
-[Adjuntar captura]
+Si aplica, agregar screenshots.
 
-**Entorno**
-- OS: Windows 11
-- Navegador: Chrome 120
-- Versión: v1.2.0
+**Información del entorno:**
+ - OS: [e.g. Windows 11]
+ - Browser [e.g. chrome, safari]
+ - Version [e.g. 22]
+
+**Contexto adicional**
+Cualquier otra información relevante.
 ```
 
-## ✨ Proponer Nuevas Características
-
-### Proceso
-
-1. **Abre un Discussion** primero para discutir la idea
-2. **Espera feedback** del Product Owner y comunidad
-3. **Si es aprobada**, se creará un issue formal
-4. **Se priorizará** en el Product Backlog
-
-### Template de Propuesta
+### ✨ Proponer Features
 
 ```markdown
-**Problema que Resuelve**
-Como [tipo de usuario], necesito [funcionalidad] para [beneficio]
+**¿Tu feature request está relacionado a un problema?**
+Descripción clara del problema. Ej: "Siempre me frustro cuando [...]"
 
-**Solución Propuesta**
-Descripción detallada de cómo funcionaría
+**Solución propuesta**
+Descripción clara de lo que quieres que suceda.
 
-**Alternativas Consideradas**
-Otras formas de resolver el problema
+**Alternativas consideradas**
+Otras soluciones o features que consideraste.
 
-**Beneficios**
-- Lista de beneficios para usuarios
-- Impacto en el negocio
-
-**Esfuerzo Estimado**
-Pequeño / Mediano / Grande
-
-**Mockups/Diseños**
-[Adjuntar si es posible]
+**Contexto adicional**
+Cualquier otra información, screenshots, etc.
 ```
+
+### 📚 Mejorar Documentación
+
+- Corregir typos
+- Mejorar explicaciones
+- Agregar ejemplos
+- Actualizar info desactualizada
+- Traducir documentos
+
+### 🧪 Escribir Tests
+
+- Incrementar coverage
+- Agregar tests de edge cases
+- Mejorar tests existentes
+- Agregar tests de integración
+
+### 🎨 Mejorar UI/UX
+
+- Mejorar diseño
+- Agregar accesibilidad
+- Optimizar performance
+- Responsive design
+
+## 📞 Obtener Ayuda
+
+### Canales de Comunicación
+
+- **GitHub Issues:** Para bugs y features
+- **GitHub Discussions:** Para preguntas generales
+- **Pull Requests:** Para revisión de código
+- **Email:** [mantainer@example.com] - Para consultas privadas
+
+### Preguntas Frecuentes
+
+**P: ¿Cuánto tiempo toma que revisen mi PR?**
+R: Generalmente dentro de 24-48 horas. Si tarda más, puedes hacer ping al reviewer.
+
+**P: ¿Puedo trabajar en múltiples issues al mismo tiempo?**
+R: Sí, pero recomendamos enfocarse en uno a la vez y usar ramas separadas para cada uno.
+
+**P: ¿Qué hago si mi PR tiene conflictos?**
+R: Actualiza tu rama con develop y resuelve los conflictos localmente.
+
+**P: ¿Puedo contribuir si soy principiante?**
+R: ¡Por supuesto! Busca issues con label "good first issue".
+
+**P: ¿CI/CD falló en mi PR, qué hago?**
+R: Revisa los logs, corrige los errores localmente, y haz push de nuevo.
+
+## 🏆 Reconocimientos
+
+Todos los contribuidores serán:
+- ✨ Listados en el README
+- 🎖️ Mencionados en release notes
+- 🙏 Agradecidos públicamente
 
 ## 📚 Recursos Adicionales
 
-- [Documentación del Proyecto](docs/project/sistema_gestion_ferreteria_completo.md)
-- [Guía de Instalación](INSTALLATION.md)
-- [Estrategia de Branching](docs/project/BRANCHING_STRATEGY.md)
-- [Guía de Scrum](docs/project/SCRUM_GUIDE.md)
-- [Discussions](https://github.com/Deibyd07/Proyecto-Ferreteria/discussions)
+- [Git Basics](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)
+- [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow)
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [Semantic Versioning](https://semver.org/)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
-## ❓ Preguntas
+## 📄 Documentos Relacionados
 
-Si tienes preguntas:
-
-1. Revisa la documentación existente
-2. Busca en [Discussions](https://github.com/Deibyd07/Proyecto-Ferreteria/discussions)
-3. Haz una pregunta en Discussions (Q&A)
-4. Únete a nuestra comunidad en [Discord/Slack] (si aplica)
+- [CI_CD_PIPELINE.md](docs/CI_CD_PIPELINE.md) - Documentación completa de CI/CD
+- [GITHUB_CONFIGURATION.md](.github/GITHUB_CONFIGURATION.md) - Configuración del repo
+- [README.md](README.md) - Información general del proyecto
 
 ---
 
-¡Gracias por contribuir! Cada aporte, grande o pequeño, hace la diferencia. 🚀
+**¡Gracias por contribuir! 🎉**
+
+Cada contribución, sin importar el tamaño, ayuda a hacer este proyecto mejor.
+
+**Última actualización:** Febrero 2026

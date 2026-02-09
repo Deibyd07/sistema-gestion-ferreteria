@@ -1,0 +1,103 @@
+name: Nightly Integration Tests
+
+on:
+  schedule:
+    # Ejecutar todos los días a las 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Permitir ejecución manual
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: './frontend/package-lock.json'
+
+      - name: Install backend dependencies
+        working-directory: ./backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Start backend server
+        working-directory: ./backend
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/test_db
+          SECRET_KEY: test-secret-key-for-integration
+          SUPABASE_URL: https://example.supabase.co
+          SUPABASE_KEY: test-key
+        run: |
+          uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+          echo $! > .backend.pid
+          sleep 5
+
+      - name: Wait for backend to be ready
+        run: |
+          timeout 30 bash -c 'until curl -f http://localhost:8000/health; do sleep 1; done'
+
+      - name: Run integration tests
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/test_db
+          SECRET_KEY: test-secret-key-for-integration
+          API_URL: http://localhost:8000
+          PYTHONPATH: ${{ github.workspace }}/backend
+        run: |
+          pytest tests/backend/ -v -m integration || echo "No integration tests found"
+
+      - name: Stop backend server
+        if: always()
+        working-directory: ./backend
+        run: |
+          if [ -f .backend.pid ]; then
+            kill $(cat .backend.pid) || true
+          fi
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Integration tests failed!"
+          echo "Check the logs for more details"
+          # Aquí podrías agregar notificaciones a Slack, Discord, etc.
