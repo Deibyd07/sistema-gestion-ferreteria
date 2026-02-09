@@ -6,7 +6,7 @@ import { config } from "@/lib/config";
 type RequestOptions = {
   method?: string;
   headers?: Record<string, string>;
-  body?: any;
+  body?: unknown;
   token?: string;
 };
 
@@ -50,15 +50,15 @@ class ApiClient {
     return this.request<T>(endpoint, { method: "GET", token });
   }
 
-  async post<T>(endpoint: string, data: any, token?: string): Promise<T> {
+  async post<T>(endpoint: string, data: unknown, token?: string): Promise<T> {
     return this.request<T>(endpoint, { method: "POST", body: data, token });
   }
 
-  async put<T>(endpoint: string, data: any, token?: string): Promise<T> {
+  async put<T>(endpoint: string, data: unknown, token?: string): Promise<T> {
     return this.request<T>(endpoint, { method: "PUT", body: data, token });
   }
 
-  async patch<T>(endpoint: string, data: any, token?: string): Promise<T> {
+  async patch<T>(endpoint: string, data: unknown, token?: string): Promise<T> {
     return this.request<T>(endpoint, { method: "PATCH", body: data, token });
   }
 
