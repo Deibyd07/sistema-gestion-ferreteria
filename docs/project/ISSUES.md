@@ -59,18 +59,21 @@ Implementar pipeline de CI/CD con GitHub Actions para automatizar pruebas y desp
 
 ---
 
-### Issue #4: Configuración de Sentry para monitoreo
-**Etiquetas**: ` Configuración de Sentry para monitoreo`, `infraestructura`
+### Issue #4: Configuración de Sentry para monitoreo ✅
+**Etiquetas**: `Configuración de Sentry para monitoreo`, `infraestructura`
 
 **Descripción**:
 Integrar Sentry para monitoreo de errores y performance en producción.
 
 **Tareas**:
-- [ ] Crear proyecto en Sentry
-- [ ] Integrar Sentry en backend (FastAPI)
-- [ ] Integrar Sentry en frontend (Next.js)
-- [ ] Configurar alertas
-- [ ] Documentar configuración
+- [x] Crear proyecto en Sentry
+- [x] Integrar Sentry en backend (FastAPI)
+- [x] Integrar Sentry en frontend (Next.js)
+- [x] Configurar alertas
+- [x] Documentar configuración
+
+**Completado**: 2026-02-08
+**Documentación**: Ver [docs/setup/SENTRY_SETUP.md](../setup/SENTRY_SETUP.md)
 
 ---
 

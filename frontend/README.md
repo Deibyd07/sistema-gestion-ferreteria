@@ -62,6 +62,7 @@ cp .env.example .env.local
 # - NEXT_PUBLIC_API_URL (URL del backend)
 # - NEXT_PUBLIC_SUPABASE_URL
 # - NEXT_PUBLIC_SUPABASE_ANON_KEY
+# - NEXT_PUBLIC_SENTRY_DSN (opcional, monitoreo)
 ```
 
 > 📘 **Configurar Supabase**: Consulta la guía [SUPABASE_SETUP.md](../SUPABASE_SETUP.md) en la raíz del proyecto para instrucciones detalladas sobre cómo crear y configurar tu proyecto de Supabase.
@@ -79,6 +80,14 @@ pnpm dev
 ```
 
 La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
+
+## 🛡️ Sentry (Opcional)
+
+Para habilitar monitoreo en produccion:
+
+1. Crea un proyecto en Sentry.
+2. Configura `NEXT_PUBLIC_SENTRY_DSN` en `.env.local`.
+3. Si quieres subir sourcemaps en build, agrega `SENTRY_ORG`, `SENTRY_PROJECT` y `SENTRY_AUTH_TOKEN`.
 
 ### Modo Producción
 

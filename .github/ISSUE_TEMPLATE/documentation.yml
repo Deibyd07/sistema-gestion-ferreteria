@@ -1,0 +1,81 @@
+name: 📚 Documentación
+description: Mejorar o agregar documentación
+title: "[DOCS] "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ayúdanos a mejorar la documentación del proyecto.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: 📖 Tipo
+      options:
+        - README
+        - Guía de Instalación
+        - Guía de Contribución
+        - Documentación de API
+        - Guía de Usuario
+        - Comentarios en Código
+        - Otro
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 🎯 ¿Qué falta o está mal?
+      placeholder: "Ej: La guía de instalación no explica cómo configurar Supabase"
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 💡 ¿Qué agregar/cambiar?
+      placeholder: |
+        Describe qué debería incluir la documentación:
+        - Sección/tema
+        - Contenido específico
+        - Ejemplos
+    validations:
+      required: true
+
+  - type: textarea
+    id: files
+    attributes:
+      label: 📂 Archivos afectados
+      placeholder: |
+        - INSTALLATION.md
+        - README.md
+    validations:
+      required: true
+      label: 🎯 Prioridad
+      description: ¿Qué tan importante es?
+      options:
+        - Critical - Bloqueante para usuarios/contribuyentes
+        - High - Muy importante
+        - Medium - Importante
+        - Low - Nice to have
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: ℹ️ Información Adicional
+      description: Cualquier otra información relevante
+      placeholder: |
+        - Links a recursos externos
+        - Ejemplos que deberían incluirse
+        - Referencias a otros proyectos
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✅ Checklist
+      options:
+        - label: Revisé que esta documentación no exista ya
+          required: true
+        - label: El problema está claramente descrito
+          required: true
