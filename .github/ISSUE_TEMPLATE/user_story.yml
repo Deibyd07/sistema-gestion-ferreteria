@@ -1,0 +1,206 @@
+name: 📖 User Story
+description: Crear una User Story para desarrollo
+title: "[STORY] "
+labels: ["user-story"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Formato: "Como [rol], quiero [acción] para [beneficio]"
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: 📝 User Story
+      placeholder: |
+        Como [rol],
+        Quiero [funcionalidad],
+        Para [beneficio].
+        
+        Ej: Como administrador,
+        Quiero registrar productos,
+        Para mantener el catálogo actualizado.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: ✅ Criterios de Aceptación
+      placeholder: |
+        - [ ] El usuario puede...
+        - [ ] El sistema valida...
+        - [ ] Se muestra...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🎯 Prioridad
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: ℹ️ Notas adicionales (opcional)
+      placeholder: Mockups, detalles técnicos, dependencias, etc.
+
+  - type: dropdown
+    id: epic
+    attributes:
+      label: 📂 Épica
+      description: ¿A qué épica pertenece esta story?
+      options:
+        - Epic 1 - Setup
+        - Epic 2 - Database
+        - Epic 3 - Auth
+        - Epic 4 - Products
+        - Epic 5 - Inventory
+        - Epic 6 - Sales
+        - Epic 7 - Purchases
+        - Epic 8 - POS
+        - Epic 9 - Reports
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 📋 Descripción Detallada
+      description: Describe en detalle qué debe hacer esta funcionalidad
+      placeholder: |
+        Explica:
+        - Qué datos se manejan
+        - Cómo interactúa el usuario
+        - Qué flujos están involucrados
+        - Reglas de negocio relevantes
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: ✅ Criterios de Aceptación
+      description: Lista de condiciones que deben cumplirse para considerar esta story completa
+      placeholder: |
+        - [ ] Usuario puede acceder al formulario de nuevo producto
+        - [ ] Formulario valida todos los campos requeridos
+        - [ ] Se guarda el producto en la base de datos
+        - [ ] Muestra mensaje de éxito después de guardar
+        - [ ] Producto aparece en la lista de productos
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-details
+    attributes:
+      label: 🔧 Detalles Técnicos
+      description: Información técnica relevante para la implementación
+      placeholder: |
+        Backend:
+        - Endpoint: POST /api/v1/products
+        - Schema: ProductCreate
+        
+        Frontend:
+        - Componente: ProductForm
+        - Página: /products/new
+        
+        Base de Datos:
+        - Tabla: products
+        - Validaciones RLS aplicadas
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🎯 Prioridad
+      description: Prioridad de esta user story
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: dropdown
+    id: size
+    attributes:
+      label: 📏 Tamaño (Story Points)
+      description: Estimación del esfuerzo requerido
+      options:
+        - "1 - Trivial"
+        - "2 - Muy pequeño"
+        - "3 - Pequeño"
+        - "5 - Mediano"
+        - "8 - Grande"
+        - "13 - Muy grande"
+        - "? - Por estimar"
+    validations:
+      required: true
+
+  - type: textarea
+    id: tasks
+    attributes:
+      label: 📝 Tareas Técnicas
+      description: Descomposición en tareas más pequeñas (se pueden crear sub-issues después)
+      placeholder: |
+        - [ ] Backend: Crear schema ProductCreate
+        - [ ] Backend: Implementar endpoint POST /products
+        - [ ] Backend: Agregar validaciones de negocio
+        - [ ] Backend: Escribir tests unitarios
+        - [ ] Frontend: Crear componente ProductForm
+        - [ ] Frontend: Integrar con API
+        - [ ] Frontend: Agregar validación de formulario
+        - [ ] Frontend: Escribir tests
+        - [ ] Documentación: Actualizar docs de API
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 🔗 Dependencias
+      description: Otros issues o stories que deben completarse primero
+      placeholder: |
+        - Depende de #123 (configuración de base de datos)
+        - Bloqueado por #124 (setup de autenticación)
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: 🎨 Mockups o Diseños
+      description: Wireframes, mockups o diseños de UI
+      placeholder: Arrastra y suelta imágenes aquí
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 📌 Notas Adicionales
+      description: Cualquier información adicional relevante
+      placeholder: |
+        - Consideraciones de seguridad
+        - Edge cases a tener en cuenta
+        - Links a recursos útiles
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✅ Definition of Ready
+      description: Verifica que la story esté lista para desarrollo
+      options:
+        - label: La user story sigue el formato "Como..., quiero..., para..."
+          required: true
+        - label: Los criterios de aceptación están claramente definidos
+          required: true
+        - label: No hay dependencias bloqueantes
+          required: true
+        - label: Hay suficiente información para que el equipo pueda empezar
+          required: true

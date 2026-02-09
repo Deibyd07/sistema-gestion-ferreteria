@@ -1,0 +1,135 @@
+name: 🔧 Tarea Técnica
+description: Refactoring, deuda técnica, mejoras de código
+title: "[TASK] "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Para tareas que mejoran el código sin cambiar funcionalidad visible.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: 🏷️ Tipo
+      options:
+        - Refactoring
+        - Deuda Técnica
+        - Performance
+        - Testing
+        - Documentación Técnica
+        - Dependencias
+        - Otro
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 📝 ¿Qué necesita mejorarse?
+      placeholder: |
+        - ¿Qué código tiene problemas?
+        - ¿Por qué es necesario cambiarlo?
+        - ¿Qué problema causa ahora?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 💡 ¿Cómo mejorarlo?
+      placeholder: |
+        Describe la solución:
+        - Qué cambios hacer
+        - Cómo mejorará el código
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🎯 Prioridad
+      options:
+        - High - Importante
+        - Medium - Puede esperar
+        - Low - Cuando haya tiempo
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: ℹ️ Notas adicionales (opcional)
+      placeholder: Archivos afectados, riesgos, etc.
+      description: ¿Cuánto esfuerzo requiere?
+      options:
+        - XS - < 2 horas
+        - S - Medio día
+        - M - 1-2 días
+        - L - 3-5 días
+        - XL - > 1 semana
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected-files
+    attributes:
+      label: 📂 Archivos Afectados
+      description: ¿Qué archivos o módulos se verán afectados?
+      placeholder: |
+        - backend/app/services/product_service.py
+        - backend/app/api/v1/endpoints/products.py
+        - frontend/src/components/ProductList.tsx
+
+  - type: textarea
+    id: testing-strategy
+    attributes:
+      label: 🧪 Estrategia de Testing
+      description: ¿Cómo se validará que funciona correctamente?
+      placeholder: |
+        - Tests existentes deben seguir pasando
+        - Agregar tests para casos X, Y, Z
+        - Pruebas manuales de...
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: ⚠️ Riesgos
+      description: ¿Qué riesgos o efectos secundarios podrían haber?
+      placeholder: |
+        - Podría romper funcionalidad X
+        - Requiere migración de datos
+        - Cambio breaking en API
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 🔗 Dependencias
+      description: ¿Depende de otros issues?
+      placeholder: |
+        - Requiere #123 completado primero
+        - Bloquea #124
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: ℹ️ Información Adicional
+      description: Cualquier otra información relevante
+      placeholder: |
+        - Links a documentación
+        - Ejemplos de código
+        - Referencias
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✅ Checklist
+      options:
+        - label: El problema está claramente descrito
+          required: true
+        - label: La solución está bien definida
+          required: true
+        - label: Se consideraron los riesgos
+          required: true

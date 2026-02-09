@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discusiones y Preguntas
+    url: https://github.com/Deibyd07/Proyecto-Ferreteria/discussions
+    about: Haz preguntas, comparte ideas o discute con la comunidad
+  - name: 📚 Documentación
+    url: https://github.com/Deibyd07/Proyecto-Ferreteria/tree/main/docs
+    about: Lee la documentación completa del proyecto
+  - name: 🚀 Guía de Contribución
+    url: https://github.com/Deibyd07/Proyecto-Ferreteria/blob/main/CONTRIBUTING.md
+    about: Aprende cómo contribuir al proyecto
