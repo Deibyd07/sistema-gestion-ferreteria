@@ -3,9 +3,9 @@
 Sistema completo de gestión para ferreterías, diseñado como producto SaaS escalable, multi-empresa y preparado para integrar facturación electrónica por API.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Contributors](https://img.shields.io/github/contributors/Deibyd07/Proyecto-Ferreteria)](https://github.com/Deibyd07/Proyecto-Ferreteria/graphs/contributors)
-[![Issues](https://img.shields.io/github/issues/Deibyd07/Proyecto-Ferreteria)](https://github.com/Deibyd07/Proyecto-Ferreteria/issues)
-[![Pull Requests](https://img.shields.io/github/issues-pr/Deibyd07/Proyecto-Ferreteria)](https://github.com/Deibyd07/Proyecto-Ferreteria/pulls)
+[![Contributors](https://img.shields.io/github/contributors/Deibyd07/sistema-gestion-ferreteria)](https://github.com/Deibyd07/sistema-gestion-ferreteria/graphs/contributors)
+[![Issues](https://img.shields.io/github/issues/Deibyd07/sistema-gestion-ferreteria)](https://github.com/Deibyd07/sistema-gestion-ferreteria/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/Deibyd07/sistema-gestion-ferreteria)](https://github.com/Deibyd07/sistema-gestion-ferreteria/pulls)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/CamiloTriana75/sistema-gestion-ferreteria/actions)
 
 > 🌟 **Proyecto Open Source** | Desarrollado con metodología Scrum | ¡Tus contribuciones son bienvenidas!
