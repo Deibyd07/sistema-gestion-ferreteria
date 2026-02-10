@@ -158,8 +158,8 @@ Los siguientes archivos se han actualizado para usar las nuevas funciones:
 
 1. ✅ `rls_policies_fixed.sql` - Script corregido
 2. ✅ `verify_rls.sql` - Script de verificación actualizado
-3. ✅ `RLS_REFERENCE.md` - Documentación actualizada
-4. ✅ `SUPABASE_SETUP.md` - Guía actualizada
+3. ✅ `REFERENCIA_RLS.md` - Documentación actualizada
+4. ✅ `SETUP_SUPABASE.md` - Guía actualizada
 
 ---
 
@@ -205,7 +205,7 @@ Sí, incluso más seguro. Usar `SECURITY DEFINER` con funciones en `public` es l
 
 Una vez ejecutado exitosamente `rls_policies_fixed.sql`, continúa con:
 
-**Paso 3 de SUPABASE_SETUP.md:** Configurar Supabase Auth (URLs de redirección, JWT settings)
+**Paso 3 de SETUP_SUPABASE.md:** Configurar Supabase Auth (URLs de redirección, JWT settings)
 
 ---
 

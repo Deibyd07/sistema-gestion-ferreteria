@@ -1,4 +1,43 @@
-# 📁 Índice de Documentación del Proyecto
+# 📁 Índice de Documentación (DEPRECATED)
+
+> ⚠️ **IMPORTANTE**: Este archivo está deprecated. 
+> 
+> Por favor, usa el **[INDICE_DOCUMENTACION.md](INDICE_DOCUMENTACION.md)** en su lugar.
+> 
+> Todos los nombres de archivos han sido traducidos al español para mejor accesibilidad del equipo.
+
+## 🔗 Ir al Índice Actualizado
+
+**[👉 INDICE_DOCUMENTACION.md](INDICE_DOCUMENTACION.md)** - Navega toda la documentación organizada y por rol
+
+---
+
+## 📋 Migración de Nombres
+
+Si necesitas la referencia de los cambios de nombres, aquí está el mapeo:
+
+| Archivo Antiguo | Archivo Nuevo |
+|-----------------|---------------|
+| BRANCHING_STRATEGY.md | ESTRATEGIA_RAMAS.md |
+| CONTRIBUTING.md | CONTRIBUIR.md |
+| SCRUM_GUIDE.md | GUIA_SCRUM.md |
+| PRODUCT_BACKLOG.md | BACKLOG_PRODUCTO.md |
+| DEFINITION_OF_DONE.md | DEFINICION_HECHO.md |
+| DATABASE_DESIGN.md | DISEÑO_BASE_DATOS.md |
+| SUPABASE_SETUP.md | SETUP_SUPABASE.md |
+| DATABASE_EXECUTION_GUIDE.md | GUIA_EJECUCION_BD.md |
+| RLS_REFERENCE.md | REFERENCIA_RLS.md |
+| RLS_FIX_EXPLANATION.md | EXPLICACION_ARREGLO_RLS.md |
+| SENTRY_SETUP.md | SETUP_SENTRY.md |
+| ISSUES.md | REPORTES_ISSUES.md |
+| GITHUB_ISSUES.md | REPORTES_GITHUB.md |
+| GITHUB_PULL_REQUESTS.md | SOLICITUDES_PULL.md |
+| GITHUB_PROJECTS.md | TABLERO_TRABAJO.md |
+
+---
+
+**Última actualización**: Febrero 2026  
+**Razón**: Localización completa de la documentación al español
 
 Este documento proporciona un índice completo de toda la documentación del proyecto.
 
@@ -9,9 +48,13 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 1. [README.md](../README.md) - Visión general 
 2. [WELCOME.md](../WELCOME.md) - Guía de bienvenida 
 3. [INSTALLATION.md](../INSTALLATION.md) - Instalación 
-5. [SCRUM_GUIDE.md](project/SCRUM_GUIDE.md) - Metodología 
+4. [BRANCHING_STRATEGY.md](project/BRANCHING_STRATEGY.md) - Estrategia de Ramas (épicas y PRs)
+5. [GITHUB_ISSUES.md](../GITHUB_ISSUES.md) - Crear y reportar issues
+6. [GITHUB_PULL_REQUESTS.md](../GITHUB_PULL_REQUESTS.md) - Flujo de PRs
+7. [CONTRIBUTING.md](../CONTRIBUTING.md) - Guía de contribución completa
+8. [SCRUM_GUIDE.md](project/SCRUM_GUIDE.md) - Metodología 
 
-**Total: ~1.5 horas para estar listo para contribuir**
+**Total: ~2 horas para estar listo para contribuir**
 
 ---
 
@@ -24,7 +67,10 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 | [README.md](../README.md) | Visión general del proyecto | Todos |
 | [WELCOME.md](../WELCOME.md) | Guía de bienvenida para nuevos contribuyentes | Nuevos contribuyentes |
 | [INSTALLATION.md](../INSTALLATION.md) | Guía completa de instalación | Desarrolladores |
-| [CONTRIBUTING.md](../CONTRIBUTING.md) | Guía de contribución | Contribuyentes |
+| [CONTRIBUIR.md](../CONTRIBUIR.md) | Guía de contribución y flujo de trabajo **ACTUALIZADO** | Contribuyentes |
+| [REPORTES_GITHUB.md](../REPORTES_GITHUB.md) | Cómo crear y gestionar reportes ✨ **NUEVO** | Reportadores de bugs |
+| [SOLICITUDES_PULL.md](../SOLICITUDES_PULL.md) | Guía detallada de solicitudes pull ✨ **NUEVO** | Developers |
+| [TABLERO_TRABAJO.md](../TABLERO_TRABAJO.md) | Uso de tableros de trabajo ✨ **NUEVO** | Team leads |
 | [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md) | Código de conducta | Todos |
 
 ---
@@ -38,7 +84,7 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 | [SCRUM_GUIDE.md](project/SCRUM_GUIDE.md) | Guía completa de Scrum | Antes de tu primer Sprint |
 | [PRODUCT_BACKLOG.md](project/PRODUCT_BACKLOG.md) | Backlog y roadmap del producto | Al elegir issues |
 | [DEFINITION_OF_DONE.md](project/DEFINITION_OF_DONE.md) | Criterios de completitud | Antes de crear un PR |
-| [BRANCHING_STRATEGY.md](project/BRANCHING_STRATEGY.md) | Estrategia de branching Git | Antes de crear tu primera rama |
+| [BRANCHING_STRATEGY.md](project/BRANCHING_STRATEGY.md) | Estrategia de épicas con PRs a develop **ACTUALIZADO** | Antes de crear tu primera rama |
 | [SPRINT_PLANNING_TEMPLATE.md](project/SPRINT_PLANNING_TEMPLATE.md) | Template para Sprint Planning | Al facilitar Sprint Planning |
 | [SPRINT_REVIEW_TEMPLATE.md](project/SPRINT_REVIEW_TEMPLATE.md) | Template para Sprint Review | Al facilitar Sprint Review |
 | [ISSUES.md](project/ISSUES.md) | Lista histórica de issues | Referencia |
@@ -46,7 +92,15 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 
 ---
 
-## 🗄️ Documentación de Base de Datos (`docs/database/`)
+## � Documentación de GitHub (`/`)
+
+**Gestión del Flujo de Trabajo:**
+
+| Archivo | Descripción | Cuándo Usar |
+|---------|-------------|-------------|
+| [REPORTES_GITHUB.md](../REPORTES_GITHUB.md) | Cómo reportar bugs y solicitar features | Al crear un reporte |
+| [SOLICITUDES_PULL.md](../SOLICITUDES_PULL.md) | Guía completa del flujo de solicitudes pull | Al hacer una solicitud |
+| [TABLERO_TRABAJO.md](../TABLERO_TRABAJO.md) | Uso de tableros de trabajo para tracking | Al gestionar épicas |
 
 | Archivo | Descripción | Cuándo Usar |
 |---------|-------------|-------------|
@@ -150,44 +204,53 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 
 ### 🆕 Nuevo Contribuyente (Primera Vez)
 
-**Lectura esencial** (~1.5 horas):
+**Lectura esencial** (~2 horas):
 1. README.md
 2. WELCOME.md
 3. INSTALLATION.md
-4. CONTRIBUTING.md
-5. SCRUM_GUIDE.md
-6. CODE_OF_CONDUCT.md
+4. BRANCHING_STRATEGY.md (estrategia de épicas y solicitudes pull)
+5. REPORTES_GITHUB.md (crear reportes)
+6. SOLICITUDES_PULL.md (flujo de solicitudes pull)
+7. CONTRIBUIR.md
+8. SCRUM_GUIDE.md
+9. CODE_OF_CONDUCT.md
 
 **Referencia cuando necesites**:
-- BRANCHING_STRATEGY.md
 - DEFINITION_OF_DONE.md
 - Backend/Frontend README según tu área
+- TABLERO_TRABAJO.md (para gestionar trabajo)
 
 ### 👨‍💻 Desarrollador Backend
 
 **Lectura inicial**:
 1. README.md
 2. INSTALLATION.md
-3. CONTRIBUTING.md
-4. backend/README.md
-5. DATABASE_DESIGN.md
+3. BRANCHING_STRATEGY.md
+4. CONTRIBUIR.md
+5. SOLICITUDES_PULL.md
+6. backend/README.md
+7. DATABASE_DESIGN.md
 
 **Referencia frecuente**:
 - DEFINITION_OF_DONE.md
 - database/database_schema.sql
 - RLS_REFERENCE.md
 - SUPABASE_SETUP.md
+- REPORTES_GITHUB.md
 
 ### 👩‍💻 Desarrollador Frontend
 
 **Lectura inicial**:
 1. README.md
 2. INSTALLATION.md
-3. CONTRIBUTING.md
-4. frontend/README.md
+3. BRANCHING_STRATEGY.md
+4. CONTRIBUIR.md
+5. SOLICITUDES_PULL.md
+6. frontend/README.md
 
 **Referencia frecuente**:
 - DEFINITION_OF_DONE.md
+- REPORTES_GITHUB.md
 - API documentation en backend
 
 ### 📋 Scrum Master
@@ -196,7 +259,8 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 1. README.md
 2. SCRUM_GUIDE.md
 3. PRODUCT_BACKLOG.md
-4. CONTRIBUTING.md
+4. CONTRIBUIR.md
+5. TABLERO_TRABAJO.md
 
 **Para facilitar eventos**:
 - SPRINT_PLANNING_TEMPLATE.md
@@ -209,23 +273,28 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 1. README.md
 2. PRODUCT_BACKLOG.md
 3. SCRUM_GUIDE.md
-4. sistema_gestion_ferreteria_completo.md
+4. GITHUB_ISSUES.md
+5. GITHUB_PROJECTS.md
+6. sistema_gestion_ferreteria_completo.md
 
 **Gestión del backlog**:
 - PRODUCT_BACKLOG.md (actualizar regularmente)
-- Issue templates para crear issues
+- REPORTES_GITHUB.md (templates para crear reportes)
+- TABLERO_TRABAJO.md (organizar trabajo)
 - DEFINITION_OF_DONE.md para aceptar trabajo
 
 ### 📝 Revisor de Código
 
 **Lectura inicial**:
-1. CONTRIBUTING.md
-2. DEFINITION_OF_DONE.md
-3. Backend/Frontend README según área
+1. CONTRIBUIR.md
+2. SOLICITUDES_PULL.md
+3. DEFINITION_OF_DONE.md
+4. Backend/Frontend README según área
 
 **Durante revisiones**:
 - DEFINITION_OF_DONE.md como checklist
-- Estándares de código en CONTRIBUTING.md
+- Estándares de código en CONTRIBUIR.md
+- SOLICITUDES_PULL.md (sección "Para el Reviewer")
 
 ---
 
@@ -236,6 +305,13 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 - SUPABASE_SETUP.md
 - DATABASE_EXECUTION_GUIDE.md
 - SENTRY_SETUP.md
+
+### Flujo de Trabajo en GitHub
+- REPORTES_GITHUB.md - Crear y gestionar reportes
+- SOLICITUDES_PULL.md - Proceso completo de solicitudes pull
+- TABLERO_TRABAJO.md - Gestionar work con tableros
+- BRANCHING_STRATEGY.md - Estrategia de épicas
+- CONTRIBUIR.md - Guía de contribución completa
 
 ### Contribución y Desarrollo
 - CONTRIBUTING.md
@@ -248,6 +324,7 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 - PRODUCT_BACKLOG.md
 - SPRINT_PLANNING_TEMPLATE.md
 - SPRINT_REVIEW_TEMPLATE.md
+- GITHUB_PROJECTS.md
 
 ### Base de Datos
 - DATABASE_DESIGN.md

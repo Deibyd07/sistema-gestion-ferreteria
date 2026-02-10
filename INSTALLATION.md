@@ -299,7 +299,7 @@ Ve a **SQL Editor** en Supabase y ejecuta los siguientes scripts en orden:
    docs/database/verify_rls.sql
    ```
 
-Consulta [DATABASE_EXECUTION_GUIDE.md](docs/setup/DATABASE_EXECUTION_GUIDE.md) para detalles.
+Consulta [GUIA_EJECUCION_BD.md](docs/setup/GUIA_EJECUCION_BD.md) para detalles.
 
 ### 4. Configurar Storage
 
@@ -419,8 +419,8 @@ lsof -ti:8000 | xargs kill -9
 
 Una vez completada la instalación:
 
-1. Lee la [Guía de Contribución](CONTRIBUTING.md) para entender cómo contribuir
-2. Revisa la [Estrategia de Branching](docs/project/BRANCHING_STRATEGY.md)
+1. Lee la [Guía de Contribución](docs/CONTRIBUIR.md) para entender cómo contribuir
+2. Revisa la [Estrategia de Branching](docs/project/ESTRATEGIA_RAMAS.md)
 3. Consulta la [Documentación del Proyecto](docs/project/sistema_gestion_ferreteria_completo.md)
 4. Únete a las discusiones del proyecto en GitHub
 

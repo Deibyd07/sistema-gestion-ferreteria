@@ -1043,10 +1043,10 @@ git commit -m "test: agregar casos para validación de email"
 ## 📖 Documentación Relacionada
 
 **Guías Detalladas:**
-- [docs/project/BRANCHING_STRATEGY.md](./docs/project/BRANCHING_STRATEGY.md) - Estrategia de ramas con épicas
-- [GITHUB_ISSUES.md](./GITHUB_ISSUES.md) - Crear y gestionar issues
-- [GITHUB_PULL_REQUESTS.md](./GITHUB_PULL_REQUESTS.md) - Guía detallada de PRs
-- [GITHUB_PROJECTS.md](./GITHUB_PROJECTS.md) - Usar GitHub Projects
+- [docs/project/ESTRATEGIA_RAMAS.md](./docs/project/ESTRATEGIA_RAMAS.md) - Estrategia de ramas con épicas
+- [REPORTES_GITHUB.md](./REPORTES_GITHUB.md) - Crear y gestionar reportes
+- [SOLICITUDES_PULL.md](./SOLICITUDES_PULL.md) - Guía detallada de solicitudes pull
+- [TABLERO_TRABAJO.md](./TABLERO_TRABAJO.md) - Usar tableros de trabajo
 - [INSTALLATION.md](./INSTALLATION.md) - Instalación paso a paso
 
 **Documentación del Proyecto:**
@@ -1070,7 +1070,7 @@ git commit -m "test: agregar casos para validación de email"
 **P: Como principiante, ¿por dónde empiezo?**
 R: 
 1. Completa la instalación ([INSTALLATION.md](./INSTALLATION.md))
-2. Lee [docs/project/BRANCHING_STRATEGY.md](./docs/project/BRANCHING_STRATEGY.md)
+2. Lee [docs/project/ESTRATEGIA_RAMAS.md](./docs/project/ESTRATEGIA_RAMAS.md)
 3. Busca issues con label `good-first-issue`
 4. Comenta que quieres trabajar en él
 5. Sigue el flujo de PR
