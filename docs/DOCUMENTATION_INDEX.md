@@ -54,8 +54,6 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 7. [CONTRIBUTING.md](../CONTRIBUTING.md) - Guía de contribución completa
 8. [SCRUM_GUIDE.md](project/SCRUM_GUIDE.md) - Metodología 
 
-**Total: ~2 horas para estar listo para contribuir**
-
 ---
 
 ## 📚 Documentación Principal
