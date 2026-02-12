@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/tu-usuario/sistema-gestion-ferreteria/discussions
+    about: Para preguntas, ideas y discusiones generales
+  - name: 📚 Documentación
+    url: https://github.com/tu-usuario/sistema-gestion-ferreteria/tree/main/docs
+    about: Consulta la documentación del proyecto
+  - name: 🐛 Security Issues
+    url: https://github.com/tu-usuario/sistema-gestion-ferreteria/security/advisories/new
+    about: Para reportar vulnerabilidades de seguridad (privado)

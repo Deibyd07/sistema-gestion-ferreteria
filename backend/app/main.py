@@ -1,9 +1,21 @@
 """
-FastAPI Application - Sistema de Gestión de Ferretería
+FastAPI Application - Sistema de Gestion de Ferreteria
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import sentry_sdk
+from sentry_sdk.integrations.fastapi import FastApiIntegration
 from app.core.config import settings
+
+if settings.SENTRY_DSN:
+    sentry_sdk.init(
+        dsn=settings.SENTRY_DSN,
+        environment=settings.ENVIRONMENT,
+        release=f"{settings.PROJECT_NAME}@{settings.VERSION}",
+        traces_sample_rate=settings.SENTRY_TRACES_SAMPLE_RATE,
+        profiles_sample_rate=settings.SENTRY_PROFILES_SAMPLE_RATE,
+        integrations=[FastApiIntegration()],
+    )
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -40,6 +52,7 @@ async def health_check():
     return {"status": "healthy"}
 
 
-# TODO: Incluir routers cuando estén implementados
-# from app.api.v1.api import api_router
-# app.include_router(api_router, prefix="/api/v1")
+# Incluir routers de la API
+from app.api.v1.endpoints import auth
+
+app.include_router(auth.router, prefix=settings.API_V1_STR, tags=["auth"])

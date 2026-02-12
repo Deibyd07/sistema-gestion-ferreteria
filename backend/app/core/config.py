@@ -40,12 +40,23 @@ class Settings(BaseSettings):
         raise ValueError(f"ALLOWED_ORIGINS debe ser string o lista, se recibió: {type(v)}")
     
     # Database - Supabase PostgreSQL
-    DATABASE_URL: str = "postgresql://user:password@localhost:5432/ferreteria_db"
+    DATABASE_URL: str = "postgresql+psycopg://user:password@localhost:5432/ferreteria_db"
     
     # Supabase
     SUPABASE_URL: Optional[str] = None
     SUPABASE_KEY: Optional[str] = None
     SUPABASE_JWT_SECRET: Optional[str] = None
+    SUPABASE_SERVICE_ROLE_KEY: Optional[str] = None  # Para operaciones admin
+    
+    # Supabase Storage
+    SUPABASE_STORAGE_BUCKET_LOGOS: str = "company-logos"
+    SUPABASE_STORAGE_BUCKET_DOCUMENTS: str = "documents"
+    SUPABASE_STORAGE_BUCKET_PRODUCTS: str = "product-images"
+    SUPABASE_STORAGE_MAX_FILE_SIZE: int = 5242880  # 5MB en bytes
+    
+    # Supabase Auth
+    SUPABASE_AUTH_REDIRECT_URL: Optional[str] = "http://localhost:3000/auth/callback"
+    SUPABASE_AUTH_PASSWORD_MIN_LENGTH: int = 8
     
     # Configuración del entorno
     ENVIRONMENT: str = "development"  # development, staging, production
@@ -56,6 +67,8 @@ class Settings(BaseSettings):
     
     # Sentry (para monitoreo en producción)
     SENTRY_DSN: Optional[str] = None
+    SENTRY_TRACES_SAMPLE_RATE: float = 0.1
+    SENTRY_PROFILES_SAMPLE_RATE: float = 0.0
 
 
 settings = Settings()

@@ -1,0 +1,78 @@
+name: ✨ Feature Request
+description: Sugerir una nueva característica
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por sugerir una nueva característica. Por favor completa la información abajo.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: ¿Qué problema resuelve esta característica?
+      description: Una descripción clara del problema o necesidad
+      placeholder: Actualmente es difícil hacer X porque...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solución Propuesta
+      description: Describe cómo te gustaría que funcionara esta característica
+      placeholder: Me gustaría poder...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas Consideradas
+      description: ¿Has considerado otras alternativas o workarounds?
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Componente
+      options:
+        - Backend (FastAPI)
+        - Frontend (Next.js)
+        - Base de Datos
+        - Autenticación
+        - CI/CD
+        - Documentación
+        - Otro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridad
+      options:
+        - Baja
+        - Media
+        - Alta
+        - Crítica
+    validations:
+      required: true
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups o Referencias
+      description: Si aplica, agrega mockups, wireframes o enlaces a implementaciones similares
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: He buscado en los issues existentes
+          required: true
+        - label: Esta característica beneficiaría a múltiples usuarios
+          required: false
+        - label: Estoy dispuesto a ayudar a implementar esta característica
+          required: false

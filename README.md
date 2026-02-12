@@ -2,6 +2,14 @@
 
 Sistema completo de gestión para ferreterías, diseñado como producto SaaS escalable, multi-empresa y preparado para integrar facturación electrónica por API.
 
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Contributors](https://img.shields.io/github/contributors/Deibyd07/sistema-gestion-ferreteria)](https://github.com/Deibyd07/sistema-gestion-ferreteria/graphs/contributors)
+[![Issues](https://img.shields.io/github/issues/Deibyd07/sistema-gestion-ferreteria)](https://github.com/Deibyd07/sistema-gestion-ferreteria/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/Deibyd07/sistema-gestion-ferreteria)](https://github.com/Deibyd07/sistema-gestion-ferreteria/pulls)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://github.com/CamiloTriana75/sistema-gestion-ferreteria/actions)
+
+> 🌟 **Proyecto Open Source** | Desarrollado con metodología Scrum | ¡Tus contribuciones son bienvenidas!
+
 ## 🎯 Características Principales
 
 - Gestión centralizada de operaciones de ferretería
@@ -10,6 +18,25 @@ Sistema completo de gestión para ferreterías, diseñado como producto SaaS esc
 - Cumplimiento normativo fiscal (facturación electrónica)
 - Soporte multi-tenant (múltiples ferreterías)
 - Sistema de roles y permisos (RBAC)
+
+## 🤝 ¿Quieres Contribuir?
+
+Este es un proyecto **open source** y ¡nos encantaría tu ayuda! Ya seas principiante o experimentado, hay muchas formas de contribuir:
+
+- 🐛 **Reportar bugs** - Encuentra algo que no funciona
+- ✨ **Proponer features** - Sugiere nuevas funcionalidades
+- 📝 **Mejorar documentación** - Ayuda a que sea más clara
+- 💻 **Escribir código** - Implementa nuevas features o fixes
+- 👀 **Revisar PRs** - Ayuda revisando el código de otros
+
+**Primeros Pasos:**
+1. Lee la [Guía de Instalación](INSTALLATION.md)
+2. Revisa la [Guía de Contribución](docs/CONTRIBUIR.md)
+3. Explora nuestro [Project Board](https://github.com/Deibyd07/Proyecto-Ferreteria/projects)
+4. Busca issues etiquetados como [good first issue](https://github.com/Deibyd07/Proyecto-Ferreteria/labels/good%20first%20issue)
+
+**Metodología:**
+Usamos **Scrum** para organizar el trabajo. Lee nuestra [Guía de Scrum](docs/project/GUIA_SCRUM.md) para entender cómo participar en Sprints.
 
 ## 📋 Roles del Sistema
 
@@ -20,7 +47,7 @@ Sistema completo de gestión para ferreterías, diseñado como producto SaaS esc
 5. **Contador** - Área financiera
 6. **Auditor** - Auditoría y reportes (opcional)
 
-## �️ Stack Tecnológico
+## 🛠️ Stack Tecnológico
 
 ### Backend
 - **FastAPI** - Framework web moderno y rápido
@@ -42,66 +69,53 @@ Sistema completo de gestión para ferreterías, diseñado como producto SaaS esc
 
 ## 🚀 Inicio Rápido
 
-### Prerrequisitos
+¿Primera vez con el proyecto? Sigue nuestra **[Guía de Instalación Detallada](INSTALLATION.md)** que incluye:
+- Instalación paso a paso
+- Configuración de Supabase
+- Solución de problemas comunes
+- Verificación de la instalación
 
+### Resumen Rápido
+
+**Prerrequisitos:**
 - Node.js 18.17+
 - Python 3.11+
 - PostgreSQL (o cuenta de Supabase)
 
-### 1. Clonar el Repositorio
-
 ```bash
+# 1. Clonar el repositorio
 git clone https://github.com/Deibyd07/sistema-gestion-ferreteria.git
 cd sistema-gestion-ferreteria
-```
 
-### 2. Configurar Backend
-
-```bash
-# Navegar a la carpeta backend
+# 2. Backend Setup
 cd backend
-
-# Crear entorno virtual
 python -m venv venv
-
-# Activar entorno virtual
-# Windows:
-venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
-
-# Instalar dependencias
+venv\Scripts\activate  # Windows
 pip install -r requirements.txt
-
-# Configurar variables de entorno
-copy .env.example .env
-# Editar .env con tus credenciales
-
-# Ejecutar servidor de desarrollo
+copy .env.example .env  # Edita con tus credenciales
 uvicorn app.main:app --reload
-```
 
-Backend disponible en: http://localhost:8000
-Documentación API: http://localhost:8000/api/docs
-
-### 3. Configurar Frontend
-
-```bash
-# Navegar a la carpeta frontend
+# 3. Frontend Setup (en otra terminal)
 cd frontend
-
-# Instalar dependencias
 npm install
-
-# Configurar variables de entorno
-copy .env.example .env.local
-# Editar .env.local con tus credenciales
-
-# Ejecutar servidor de desarrollo
+copy .env.example .env.local  # Edita con tus credenciales
 npm run dev
 ```
 
-Frontend disponible en: http://localhost:3000
+**URLs:**
+- Backend: http://localhost:8000
+- API Docs: http://localhost:8000/api/docs
+- Frontend: http://localhost:3000
+
+**Ver la [Guía de Instalación Completa](INSTALLATION.md) para detalles.**
+📘 **[Guía de Configuración de Supabase](docs/setup/SETUP_SUPABASE.md)**
+
+Esta guía incluye:
+- Creación del proyecto en Supabase
+- Obtención de credenciales
+- Configuración de autenticación
+- Configuración de storage (opcional)
+- Verificación de la conexión
 
 ## 📁 Estructura del Proyecto
 
@@ -109,51 +123,61 @@ Frontend disponible en: http://localhost:3000
 sistema-gestion-ferreteria/
 ├── backend/                    # API Backend (FastAPI)
 │   ├── app/
-│   │   ├── api/               # Endpoints
-│   │   ├── core/              # Configuración
-│   │   ├── db/                # Base de datos
+│   │   ├── api/               # Endpoints de la API
+│   │   ├── core/              # Configuración central
+│   │   ├── db/                # Configuración de BD
 │   │   ├── models/            # Modelos SQLAlchemy
 │   │   ├── schemas/           # Schemas Pydantic
 │   │   ├── services/          # Lógica de negocio
-│   │   └── main.py           # Punto de entrada
-│   ├── tests/                 # Tests
+│   │   ├── repositories/      # Acceso a datos
+│   │   └── main.py            # Punto de entrada
+│   ├── tests/                 # Tests unitarios
+│   ├── alembic/               # Migraciones de BD
 │   ├── requirements.txt       # Dependencias Python
 │   └── README.md
 │
 ├── frontend/                   # Aplicación Frontend (Next.js)
 │   ├── src/
-│   │   ├── app/              # App Router (páginas)
-│   │   ├── components/       # Componentes React
-│   │   ├── lib/              # Utilidades
-│   │   ├── services/         # API clients
-│   │   └── types/            # Tipos TypeScript
+│   │   ├── app/               # App Router (páginas)
+│   │   ├── components/        # Componentes React
+│   │   ├── lib/               # Utilidades y configs
+│   │   ├── services/          # API clients
+│   │   ├── types/             # Tipos TypeScript
+│   │   ├── contexts/          # React Contexts
+│   │   └── hooks/             # Custom Hooks
+│   ├── public/                # Assets estáticos
 │   ├── package.json
 │   └── README.md
 │
-├── docs/                       # Documentación (próximamente)
-├── ISSUES.md                   # Listado de issues del proyecto
-├── sistema_gestion_ferreteria_completo.md  # Documentación completa
+├── docs/                       # Documentación completa
+│   ├── INDICE_DOCUMENTACION.md # Índice y navegación de toda la docu
+│   ├── project/                # Metodología, procesos y especificaciones
+│   ├── database/               # Diseño y configuración de BD
+│   ├── security/               # Políticas de seguridad RLS
+│   └── setup/                  # Guías de configuración
 └── README.md                   # Este archivo
 ```
 
 ## 📝 Documentación
 
-- **Documentación Completa**: [sistema_gestion_ferreteria_completo.md](sistema_gestion_ferreteria_completo.md)
-- **Issues y Roadmap**: [ISSUES.md](ISSUES.md)
+- **Índice de Documentación**: [INDICE_DOCUMENTACION.md](docs/INDICE_DOCUMENTACION.md) - Navega todos los documentos del proyecto
+- **Documentación Completa**: [sistema_gestion_ferreteria_completo.md](docs/project/sistema_gestion_ferreteria_completo.md)
+- **Issues y Roadmap**: [docs/project/REPORTES_ISSUES.md](docs/project/REPORTES_ISSUES.md)
 - **Backend README**: [backend/README.md](backend/README.md)
 - **Frontend README**: [frontend/README.md](frontend/README.md)
 
 ## 🚦 Fase Actual: MVP Core (Fase 1)
 
 Actualmente trabajando en:
-- ✅ Configuración inicial del proyecto
+- ✅ Configuración inicial del proyecto (Issue #1)
+- ✅ Configuración de Supabase (Issue #2)
 - ⏳ Modelos de base de datos
 - ⏳ Sistema de autenticación
 - ⏳ Gestión básica de productos
 - ⏳ POS básico
 - ⏳ Inventario básico
 
-Ver [ISSUES.md](ISSUES.md) para el roadmap completo.
+Ver [docs/project/REPORTES_ISSUES.md](docs/project/REPORTES_ISSUES.md) para el roadmap completo.
 
 ## 🤝 Contribución
 
@@ -165,3 +189,122 @@ Ver [ISSUES.md](ISSUES.md) para el roadmap completo.
 ## 📄 Licencia
 
 Por definir
+� Documentación
+
+### Para Usuarios y Desarrolladores
+- 📖 **[Guía de Instalación](INSTALLATION.md)** - Setup detallado del proyecto
+- 🤝 **[Guía de Contribución](docs/CONTRIBUIR.md)** - Cómo contribuir al proyecto
+- 📜 **[Código de Conducta](CODE_OF_CONDUCT.md)** - Nuestros estándares comunitarios
+- 🎓 **[Guía de Bienvenida](WELCOME.md)** - Bienvenido al proyecto
+- 📚 **[Índice de Documentación](docs/DOCUMENTATION_INDEX.md)** - Toda la documentación
+
+### Desarrollo y Arquitectura
+- 💻 **[Backend README](backend/README.md)** - Documentación del API
+- 🎨 **[Frontend README](frontend/README.md)** - Documentación del Frontend
+- 🗄️ **[Diseño de Base de Datos](docs/database/DISEÑO_BASE_DATOS.md)** - Schema y relaciones
+- 🏗️ **[Documentación Completa](docs/project/sistema_gestion_ferreteria_completo.md)** - Arquitectura completa
+
+### Metodología Scrum
+- 🏃 **[Guía de Scrum](docs/project/GUIA_SCRUM.md)** - Cómo trabajamos con Scrum
+- 📋 **[Product Backlog](docs/project/BACKLOG_PRODUCTO.md)** - Roadmap y funcionalidades
+- ✅ �️ Roadmap
+
+Estamos en **Q1 2026**, trabajando en las bases del sistema.
+
+### Q1 2026 (Enero - Marzo)
+- ✅ **Epic 1**: Setup inicial del proyecto
+- 🔄 **Epic 2**: Base de datos y schemas (60% completo)
+- 🔄 **Epic 3**: Autenticación y autorización (40% completo)
+- 📅 **Epic 4**: Gestión de productos
+
+### Q2 2026 (Abril - Junio)
+- **Epic 5**: Gestión de inventario
+- **Epic 6**: Gestión de ventas
+- **Epic 7**: Gestión de compras
+
+### Q3 2026 (Julio - Septiembre)
+- **Epic 8**: Punto de Venta (POS)
+- **Epic 9**: Reportes y análisis
+- **Epic 10**: Facturación electrónica
+
+### Q4 2026 (Octubre - Diciembre)
+- **Epic 11-13**: Optimizaciones, features adicionales y preparación para producción
+
+Ver el [Product Backlog](docs/project/BACKLOG_PRODUCTO.md) completo para más detalles.
+
+## 🎯 Sprint Actual
+
+Revisa nuestro [Project Board](https://github.com/Deibyd07/Proyecto-Ferreteria/projects) para ver:
+- 📊 Sprint Goal actual
+- 📋 Issues del Sprint
+- 🔄 Progreso en tiempo real
+- 👥 Quién está trabajando en qué
+
+## 🤝 Cómo Contribuir
+
+Seguimos metodología **Scrum** con Sprints de 2 semanas.
+
+### Proceso Rápido
+
+1. **Elige un issue** del [Sprint Backlog](https://github.com/Deibyd07/Proyecto-Ferreteria/projects)
+   - Busca `good first issue` si eres nuevo
+   - Comenta que vas a trabajar en él
+   
+2. **Crea tu rama** desde la épica correspondiente:
+   ```bash
+   git checkout epic/N-nombre-epica
+   git checkout -b feature/issue-123-descripcion
+   ```
+
+3. **Desarrolla** siguiendo nuestros estándares:
+   - Sigue [estándares de código](CONTRIBUIR.md#estándares-de-código)
+   - Escribe tests
+   - Actualiza documentación
+
+4. **Crea Pull Request**:
+   - Usa la plantilla de PR
+   - Solicita revisión
+   - Responde a comentarios
+
+5. **Merge**: Una vez aprobado, se hará merge a la épica
+
+**Lee la [Guía Completa de Contribución](docs/CONTRIBUIR.md)** para todos los detalles.
+
+### Eventos de Scrum
+
+Participamos en eventos Scrum (mayormente asíncronos en GitHub):
+
+- 📅 **Sprint Planning** - Inicio de cada Sprint (cada 2 semanas)
+- 💬 **Daily Updates** - Actualizar progreso en issues (asíncrono)
+- 🎉 **Sprint Review** - Demo de funcionalidades (fin del Sprint)
+- 🔄 **Sprint Retrospective** - Mejora continua (después de Review)
+
+Lee la [Guía de Scrum](docs/project/GUIA_SCRUM.md) para detalles.
+
+## 👥 Comunidad
+
+- 💬 **[Discussions](https://github.com/Deibyd07/Proyecto-Ferreteria/discussions)** - Preguntas, ideas, discusiones
+- 🐛 **[Issues](https://github.com/Deibyd07/Proyecto-Ferreteria/issues)** - Bugs y features
+- 📋 **[Project Board](https://github.com/Deibyd07/Proyecto-Ferreteria/projects)** - Progreso del Sprint
+
+## 🙏 Agradecimientos
+
+Gracias a todos nuestros contribuyentes que hacen este proyecto posible:
+
+<!-- ALL-CONTRIBUTORS-LIST:START -->
+<!-- Lista generada automáticamente -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## 📄 Licencia
+
+Por definir
+
+---
+
+**¿Listo para contribuir?** 🚀
+1. Lee [INSTALLATION.md](INSTALLATION.md)
+2. Revisa [docs/CONTRIBUIR.md](docs/CONTRIBUIR.md)
+3. Explora el [Project Board](https://github.com/Deibyd07/Proyecto-Ferreteria/projects)
+4. ¡Elige tu primer issue!
+
+**¿Preguntas?** Abre un [Discussion](https://github.com/Deibyd07/Proyecto-Ferreteria/discussions) o comenta en un issue.

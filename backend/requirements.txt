@@ -1,36 +1,38 @@
 # FastAPI y servidor
-fastapi==0.109.0
-uvicorn[standard]==0.27.0
-python-multipart==0.0.6
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.12
 
 # Base de datos
-sqlalchemy==2.0.25
-alembic==1.13.1
-psycopg2-binary==2.9.9
+sqlalchemy>=2.0.36
+alembic>=1.14.0
+psycopg[binary]>=3.2.0  # Driver PostgreSQL (más compatible con Windows que psycopg2)
+psycopg2-binary>=2.9.9  # Para tests y compatibilidad con Supabase
 
 # Pydantic para validación
-pydantic==2.5.3
-pydantic-settings==2.1.0
+pydantic>=2.10.0
+pydantic-settings>=2.6.0
 
 # Autenticación y seguridad
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
-bcrypt==4.1.2
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+bcrypt>=4.2.0
 
 # Supabase
-supabase==2.3.4
+supabase>=2.3.4
 
 # Utilidades
-python-dotenv==1.0.0
-email-validator==2.1.0
+python-dotenv>=1.0.0
+email-validator>=2.2.0
 
-# Monitoreo (opcional, descomentar cuando se configure)
-# sentry-sdk[fastapi]==1.40.0
+# Monitoreo
+sentry-sdk[fastapi]==1.40.0
 
 # Testing
 pytest==7.4.4
 pytest-asyncio==0.23.3
-httpx==0.26.0
+pytest-cov==4.1.0
+httpx==0.25.2
 
 # Linting y formateo (desarrollo)
 black==24.1.1

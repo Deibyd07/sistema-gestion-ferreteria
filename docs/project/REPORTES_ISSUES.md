@@ -59,35 +59,44 @@ Implementar pipeline de CI/CD con GitHub Actions para automatizar pruebas y desp
 
 ---
 
-### Issue #4: Configuración de Sentry para monitoreo
-**Etiquetas**: ` Configuración de Sentry para monitoreo`, `infraestructura`
+### Issue #4: Configuración de Sentry para monitoreo ✅
+**Etiquetas**: `Configuración de Sentry para monitoreo`, `infraestructura`
 
 **Descripción**:
 Integrar Sentry para monitoreo de errores y performance en producción.
 
 **Tareas**:
-- [ ] Crear proyecto en Sentry
-- [ ] Integrar Sentry en backend (FastAPI)
-- [ ] Integrar Sentry en frontend (Next.js)
-- [ ] Configurar alertas
-- [ ] Documentar configuración
+- [x] Crear proyecto en Sentry
+- [x] Integrar Sentry en backend (FastAPI)
+- [x] Integrar Sentry en frontend (Next.js)
+- [x] Configurar alertas
+- [x] Documentar configuración
+
+**Completado**: 2026-02-08
+**Documentación**: Ver [docs/setup/SENTRY_SETUP.md](../setup/SENTRY_SETUP.md)
 
 ---
 
 ## 📋 ÉPICA 2: Base de Datos y Modelos
 
-### Issue #5: Diseño del modelo de base de datos
+### Issue #5: Diseño del modelo de base de datos ✅
 **Etiquetas**: `base-de-datos`, `diseño`
 
 **Descripción**:
 Diseñar el esquema completo de base de datos para el sistema multi-tenant.
 
 **Tareas**:
-- [ ] Crear diagrama ER completo
-- [ ] Definir tablas principales (tenants, users, products, etc.)
-- [ ] Definir relaciones entre tablas
-- [ ] Definir índices para optimización
-- [ ] Documentar decisiones de diseño
+- [x] Crear diagrama ER completo
+- [x] Definir tablas principales (tenants, users, products, etc.)
+- [x] Definir relaciones entre tablas
+- [x] Definir índices para optimización
+- [x] Documentar decisiones de diseño
+
+**Completado**: 2026-02-11
+**Documentación**: 
+- Ver [docs/database/DATABASE_DESIGN.md](../database/DATABASE_DESIGN.md) - Diseño detallado completo
+- Ver [docs/database/DATABASE_DIAGRAM.md](../database/DATABASE_DIAGRAM.md) - Diagramas ER en Mermaid
+- Ver [docs/database/database_schema.sql](../database/database_schema.sql) - Script SQL completo
 
 ---
 

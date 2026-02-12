@@ -1,0 +1,98 @@
+name: 🐛 Bug Report
+description: Reportar un bug o problema
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por reportar un bug. Por favor completa la información abajo.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción del Bug
+      description: Una descripción clara y concisa del bug
+      placeholder: ¿Qué salió mal?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Pasos para Reproducir
+      description: Pasos para reproducir el comportamiento
+      placeholder: |
+        1. Ve a '...'
+        2. Haz click en '...'
+        3. Ve el error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamiento Esperado
+      description: ¿Qué esperabas que sucediera?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamiento Actual
+      description: ¿Qué sucedió en realidad?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Componente Afectado
+      options:
+        - Backend (FastAPI)
+        - Frontend (Next.js)
+        - Base de Datos
+        - Autenticación
+        - CI/CD
+        - Otro
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Entorno
+      description: Información sobre tu entorno
+      value: |
+        - OS: [e.g., Windows 11, macOS 14, Ubuntu 22.04]
+        - Browser: [e.g., Chrome 120, Firefox 121]
+        - Node Version: [e.g., 20.10.0]
+        - Python Version: [e.g., 3.11.0]
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs o Mensajes de Error
+      description: Si aplica, copia y pega cualquier log o mensaje de error relevante
+      render: shell
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Si aplica, agrega screenshots para ayudar a explicar el problema
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: He buscado en los issues existentes
+          required: true
+        - label: He probado con la última versión
+          required: true
+        - label: He incluido toda la información relevante
+          required: true

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Pre-commit hook para formateo automático
+# Coloca este archivo en .git/hooks/pre-commit y hazlo ejecutable
+
+echo "🔍 Running pre-commit checks..."
+
+# Backend - Python
+echo "🐍 Formatting Python code..."
+cd backend
+black .
+ruff check --fix .
+cd ..
+
+# Frontend - TypeScript/JavaScript
+echo "⚛️  Formatting frontend code..."
+cd frontend
+npx prettier --write "src/**/*.{ts,tsx,js,jsx,json,css}"
+cd ..
+
+# Add formatted files
+git add -A
+
+echo "✅ Pre-commit checks complete!"
