@@ -14,7 +14,7 @@
 ## Requisitos Previos
 
 ### Para Supabase
-- ✅ Proyecto de Supabase creado y configurado ([ver SUPABASE_SETUP.md](SUPABASE_SETUP.md))
+- ✅ Proyecto de Supabase creado y configurado ([ver SETUP_SUPABASE.md](SETUP_SUPABASE.md))
 - ✅ Acceso al SQL Editor de Supabase
 - ✅ Credenciales de conexión guardadas
 
@@ -361,8 +361,8 @@ Después de ejecutar el schema exitosamente:
 
 ## 📚 Referencias
 
-- [DATABASE_DESIGN.md](DATABASE_DESIGN.md) - Diseño detallado
-- [SUPABASE_SETUP.md](SUPABASE_SETUP.md) - Configuración de Supabase
+- [DISEÑO_BASE_DATOS.md](DISEÑO_BASE_DATOS.md) - Diseño detallado
+- [SETUP_SUPABASE.md](SETUP_SUPABASE.md) - Configuración de Supabase
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 - [Supabase Docs - Database](https://supabase.com/docs/guides/database)
 

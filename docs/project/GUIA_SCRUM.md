@@ -376,7 +376,7 @@ graph TD
 1. **Lee la documentación**:
    - [README.md](../README.md)
    - [INSTALLATION.md](../INSTALLATION.md)
-   - [CONTRIBUTING.md](../CONTRIBUTING.md)
+   - [CONTRIBUIR.md](../CONTRIBUIR.md)
 
 2. **Configura tu entorno**: Sigue INSTALLATION.md
 
@@ -524,7 +524,7 @@ Medimos estas métricas cada Sprint:
 
 **¿Listo para comenzar?** 🚀
 
-1. Lee [CONTRIBUTING.md](../CONTRIBUTING.md)
+1. Lee [CONTRIBUIR.md](../CONTRIBUIR.md)
 2. Configura tu entorno con [INSTALLATION.md](../INSTALLATION.md)
 3. Ve al [Project Board](https://github.com/Deibyd07/Proyecto-Ferreteria/projects)
 4. ¡Elige tu primer issue y empieza a  contribuir!

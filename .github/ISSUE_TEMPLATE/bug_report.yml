@@ -1,64 +1,98 @@
 name: 🐛 Bug Report
-description: Reportar un error o comportamiento inesperado
-title: "[BUG] "
-labels: ["bug"]
+description: Reportar un bug o problema
+title: "[Bug]: "
+labels: ["bug", "triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Gracias por reportar este bug. Completa la información esencial.
+        Gracias por reportar un bug. Por favor completa la información abajo.
 
   - type: textarea
     id: description
     attributes:
-      label: 📝 ¿Qué está mal?
-      description: Describe el bug de forma clara y concisa
-      placeholder: "Ej: El formulario de productos acepta stock negativo"
+      label: Descripción del Bug
+      description: Una descripción clara y concisa del bug
+      placeholder: ¿Qué salió mal?
     validations:
       required: true
 
   - type: textarea
-    id: steps
+    id: reproduction
     attributes:
-      label: 🔄 ¿Cómo reproducirlo?
+      label: Pasos para Reproducir
+      description: Pasos para reproducir el comportamiento
       placeholder: |
-        1. Ir a '...'
-        2. Hacer clic en '...'
-        3. Ver error
+        1. Ve a '...'
+        2. Haz click en '...'
+        3. Ve el error
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: ✅ ¿Qué debería pasar?
-      placeholder: "Debería mostrar error de validación"
+      label: Comportamiento Esperado
+      description: ¿Qué esperabas que sucediera?
     validations:
       required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamiento Actual
+      description: ¿Qué sucedió en realidad?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Componente Afectado
+      options:
+        - Backend (FastAPI)
+        - Frontend (Next.js)
+        - Base de Datos
+        - Autenticación
+        - CI/CD
+        - Otro
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Entorno
+      description: Información sobre tu entorno
+      value: |
+        - OS: [e.g., Windows 11, macOS 14, Ubuntu 22.04]
+        - Browser: [e.g., Chrome 120, Firefox 121]
+        - Node Version: [e.g., 20.10.0]
+        - Python Version: [e.g., 3.11.0]
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs o Mensajes de Error
+      description: Si aplica, copia y pega cualquier log o mensaje de error relevante
+      render: shell
 
   - type: textarea
     id: screenshots
     attributes:
-      label: 📸 Screenshots (opcional)
-      placeholder: Arrastra imágenes aquí si ayuda
+      label: Screenshots
+      description: Si aplica, agrega screenshots para ayudar a explicar el problema
 
-  - type: dropdown
-    id: severity
+  - type: checkboxes
+    id: checklist
     attributes:
-      label: 🔴 Severidad
+      label: Checklist
       options:
-        - Critical - Sistema no funciona
-        - High - Problema importante
-        - Medium - Problema menor
-        - Low - Cosmético
-    validations:
-      required: true
-
-  - type: textarea
-    id: context
-    attributes:
-      label: ℹ️ Información adicional (opcional)
-      placeholder: |
-        - OS: Windows/Mac/Linux
-        - Navegador: Chrome/Firefox/Safari
-        - Logs de error si los hay
+        - label: He buscado en los issues existentes
+          required: true
+        - label: He probado con la última versión
+          required: true
+        - label: He incluido toda la información relevante
+          required: true

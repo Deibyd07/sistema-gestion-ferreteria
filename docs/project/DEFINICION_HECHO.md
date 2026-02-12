@@ -8,7 +8,7 @@ Un issue está **Done** cuando cumple **TODOS** estos criterios:
 
 ### Código
 - [ ] El código está implementado según los criterios de aceptación del issue
-- [ ] El código sigue las [convenciones de estilo](../../CONTRIBUTING.md#estándares-de-código)
+- [ ] El código sigue las [convenciones de estilo](../../CONTRIBUIR.md#estándares-de-código)
 - [ ] El código está bien documentado (docstrings, comentarios donde necesario)
 - [ ] No hay código comentado o console.logs innecesarios
 - [ ] No hay vulnerabilidades de seguridad evidentes

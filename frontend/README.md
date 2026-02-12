@@ -65,7 +65,7 @@ cp .env.example .env.local
 # - NEXT_PUBLIC_SENTRY_DSN (opcional, monitoreo)
 ```
 
-> 📘 **Configurar Supabase**: Consulta la guía [SUPABASE_SETUP.md](../SUPABASE_SETUP.md) en la raíz del proyecto para instrucciones detalladas sobre cómo crear y configurar tu proyecto de Supabase.
+> 📘 **Configurar Supabase**: Consulta la guía [SETUP_SUPABASE.md](../docs/setup/SETUP_SUPABASE.md) en la raíz del proyecto para instrucciones detalladas sobre cómo crear y configurar tu proyecto de Supabase.
 
 ## 🚀 Ejecutar la Aplicación
 

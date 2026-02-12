@@ -20,13 +20,13 @@ git remote add upstream https://github.com/Deibyd07/Proyecto-Ferreteria.git
 ### 2. Lee Documentación Esencial
 
 **Requerido (15 minutos de lectura):**
-- 📖 [CONTRIBUTING.md](CONTRIBUTING.md) - Cómo contribuir (¡importante!)
-- 🏃 [SCRUM_GUIDE.md](docs/project/SCRUM_GUIDE.md) - Cómo trabajamos
+- 📖 [CONTRIBUIR.md](docs/CONTRIBUIR.md) - Cómo contribuir (¡importante!)
+- 🏃 [GUIA_SCRUM.md](docs/project/GUIA_SCRUM.md) - Cómo trabajamos
 - 📜 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) - Nuestras reglas
 
 **Opcional pero útil:**
-- 🌳 [BRANCHING_STRATEGY.md](docs/project/BRANCHING_STRATEGY.md) - Estrategia Git
-- ✅ [DEFINITION_OF_DONE.md](docs/project/DEFINITION_OF_DONE.md) - Cuándo está "hecho"
+- 🌳 [ESTRATEGIA_RAMAS.md](docs/project/ESTRATEGIA_RAMAS.md) - Estrategia Git
+- ✅ [DEFINICION_HECHO.md](docs/project/DEFINICION_HECHO.md) - Cuándo está "hecho"
 
 ### 3. Encuentra tu Primera Tarea
 
@@ -71,29 +71,29 @@ Luego ve a GitHub y **crea tu Pull Request** usando la plantilla.
 |-----------|-----------|--------|
 | [README.md](README.md) | Visión general del proyecto | 5 min |
 | [INSTALLATION.md](INSTALLATION.md) | Setup completo | 30 min |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | Guía de contribución | 15 min |
+| [CONTRIBUIR.md](docs/CONTRIBUIR.md) | Guía de contribución | 15 min |
 
 ### Metodología
 | Documento | ¿Para qué? | Tiempo |
 |-----------|-----------|--------|
-| [SCRUM_GUIDE.md](docs/project/SCRUM_GUIDE.md) | Cómo trabajamos con Scrum | 20 min |
-| [PRODUCT_BACKLOG.md](docs/project/PRODUCT_BACKLOG.md) | Roadmap y funcionalidades | 10 min |
-| [DEFINITION_OF_DONE.md](docs/project/DEFINITION_OF_DONE.md) | Criterios de calidad | 5 min |
-| [BRANCHING_STRATEGY.md](docs/project/BRANCHING_STRATEGY.md) | Estrategia de Git | 10 min |
+| [GUIA_SCRUM.md](docs/project/GUIA_SCRUM.md) | Cómo trabajamos con Scrum | 20 min |
+| [BACKLOG_PRODUCTO.md](docs/project/BACKLOG_PRODUCTO.md) | Roadmap y funcionalidades | 10 min |
+| [DEFINICION_HECHO.md](docs/project/DEFINICION_HECHO.md) | Criterios de calidad | 5 min |
+| [ESTRATEGIA_RAMAS.md](docs/project/ESTRATEGIA_RAMAS.md) | Estrategia de Git | 10 min |
 
 ### Desarrollo
 | Documento | ¿Para qué? | Tiempo |
 |-----------|-----------|--------|
 | [backend/README.md](backend/README.md) | Documentación del backend | 15 min |
 | [frontend/README.md](frontend/README.md) | Documentación del frontend | 15 min |
-| [DATABASE_DESIGN.md](docs/database/DATABASE_DESIGN.md) | Schema de BD | 10 min |
+| [DISEÑO_BASE_DATOS.md](docs/database/DISEÑO_BASE_DATOS.md) | Schema de BD | 10 min |
 
 ### Setup Técnico
 | Documento | ¿Para qué? | Tiempo |
 |-----------|-----------|--------|
-| [SUPABASE_SETUP.md](docs/setup/SUPABASE_SETUP.md) | Configurar Supabase | 20 min |
-| [DATABASE_EXECUTION_GUIDE.md](docs/setup/DATABASE_EXECUTION_GUIDE.md) | Ejecutar scripts SQL | 15 min |
-| [SENTRY_SETUP.md](docs/setup/SENTRY_SETUP.md) | Configurar monitoreo | 10 min |
+| [SETUP_SUPABASE.md](docs/setup/SETUP_SUPABASE.md) | Configurar Supabase | 20 min |
+| [GUIA_EJECUCION_BD.md](docs/setup/GUIA_EJECUCION_BD.md) | Ejecutar scripts SQL | 15 min |
+| [SETUP_SENTRY.md](docs/setup/SETUP_SENTRY.md) | Configurar monitoreo | 10 min |
 
 ## 🎯 Tipos de Contribución
 
@@ -215,7 +215,7 @@ Luego ve a GitHub y **crea tu Pull Request** usando la plantilla.
 
 - [ ] Leí README.md
 - [ ] Instalé el proyecto localmente siguiendo INSTALLATION.md
-- [ ] Leí CONTRIBUTING.md completamente
+- [ ] Leí CONTRIBUIR.md completamente
 - [ ] Leí CODE_OF_CONDUCT.md
 - [ ] Entiendo la metodología Scrum básica
 - [ ] Configuré Git con mi nombre y email
@@ -271,7 +271,7 @@ Gracias por considerar contribuir a este proyecto. Cada contribución, grande o 
 **¿Listo?** 🚀
 
 1. [Instala el proyecto](INSTALLATION.md)
-2. [Lee la guía de contribución](CONTRIBUTING.md)
+2. [Lee la guía de contribución](docs/CONTRIBUIR.md)
 3. [Encuentra tu primer issue](https://github.com/Deibyd07/Proyecto-Ferreteria/labels/good%20first%20issue)
 4. ¡Empieza a contribuir!
 

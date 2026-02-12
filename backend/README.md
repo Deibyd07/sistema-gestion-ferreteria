@@ -82,7 +82,7 @@ copy .env.example .env
 # - SENTRY_TRACES_SAMPLE_RATE (opcional, default 0.1)
 ```
 
-**📖 Guía detallada**: Ver [SUPABASE_SETUP.md](../docs/setup/SUPABASE_SETUP.md) para configurar Supabase completamente.
+**📖 Guía detallada**: Ver [SETUP_SUPABASE.md](../docs/setup/SETUP_SUPABASE.md) para configurar Supabase completamente.
 
 ### Sentry (Opcional)
 
