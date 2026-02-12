@@ -1,6 +1,6 @@
-## ¿Qué hace este PR?
+## Descripción
 
-<!-- Resume los cambios en 2-3 líneas -->
+<!-- Explica brevemente qué cambios incluye este PR -->
 
 ## Issue relacionado
 
@@ -8,8 +8,5 @@ Closes #
 
 ## Checklist
 
-- [ ] ✅ El código funciona y los tests pasan
-- [ ] 📝 Actualicé la documentación (si aplica)
-- [ ] ✨ Sin conflictos de merge
-
-<!-- Screenshots o notas adicionales aquí si son necesarias -->
+- [ ] Código funciona correctamente
+- [ ] Documentación actualizada (si aplica)
