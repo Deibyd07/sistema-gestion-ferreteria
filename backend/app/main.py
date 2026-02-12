@@ -52,6 +52,7 @@ async def health_check():
     return {"status": "healthy"}
 
 
-# TODO: Incluir routers cuando estén implementados
-# from app.api.v1.api import api_router
-# app.include_router(api_router, prefix="/api/v1")
+# Incluir routers de la API
+from app.api.v1.endpoints import auth
+
+app.include_router(auth.router, prefix=settings.API_V1_STR, tags=["auth"])
