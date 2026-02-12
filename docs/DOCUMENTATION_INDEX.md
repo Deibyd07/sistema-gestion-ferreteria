@@ -11,8 +11,6 @@ Si eres nuevo en el proyecto, **lee estos documentos en este orden**:
 3. [INSTALLATION.md](../INSTALLATION.md) - Instalación 
 5. [SCRUM_GUIDE.md](project/SCRUM_GUIDE.md) - Metodología 
 
-**Total: ~1.5 horas para estar listo para contribuir**
-
 ---
 
 ## 📚 Documentación Principal
