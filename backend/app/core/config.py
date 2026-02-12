@@ -1,13 +1,20 @@
 """
 Configuración de la aplicación usando Pydantic Settings
 """
-from typing import List, Optional
+from typing import List, Optional, Union
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import AnyHttpUrl, field_validator
 
 
 class Settings(BaseSettings):
     """Configuración general de la aplicación"""
+    
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=True,
+        extra="allow"
+    )
     
     # Información del proyecto
     PROJECT_NAME: str = "Sistema de Gestión de Ferretería"
@@ -19,15 +26,18 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
-    # CORS
-    ALLOWED_ORIGINS: str | List[str] = "http://localhost:3000,http://localhost:5173"
+    # CORS - Puede ser string separado por comas o lista
+    ALLOWED_ORIGINS: Union[str, List[str]] = "http://localhost:3000,http://localhost:5173"
     
-    @field_validator("ALLOWED_ORIGINS", mode="after")
+    @field_validator("ALLOWED_ORIGINS", mode="before")
     @classmethod
-    def assemble_cors_origins(cls, v: str | List[str]) -> List[str]:
+    def assemble_cors_origins(cls, v: Union[str, List[str]]) -> List[str]:
         if isinstance(v, str):
-            return [i.strip() for i in v.split(",") if i.strip()]
-        return v
+            # Si es un string, dividir por comas
+            return [origin.strip() for origin in v.split(",") if origin.strip()]
+        elif isinstance(v, list):
+            return v
+        raise ValueError(f"ALLOWED_ORIGINS debe ser string o lista, se recibió: {type(v)}")
     
     # Database - Supabase PostgreSQL
     DATABASE_URL: str = "postgresql+psycopg://user:password@localhost:5432/ferreteria_db"
@@ -55,16 +65,10 @@ class Settings(BaseSettings):
     # Logging
     LOG_LEVEL: str = "INFO"
     
-    # Sentry (para monitoreo en produccion)
+    # Sentry (para monitoreo en producción)
     SENTRY_DSN: Optional[str] = None
     SENTRY_TRACES_SAMPLE_RATE: float = 0.1
     SENTRY_PROFILES_SAMPLE_RATE: float = 0.0
-    
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        case_sensitive=True,
-        extra="allow"
-    )
 
 
 settings = Settings()
