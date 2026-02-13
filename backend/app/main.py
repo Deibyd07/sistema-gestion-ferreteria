@@ -52,6 +52,25 @@ async def health_check():
     return {"status": "healthy"}
 
 
+# Test endpoint para debug
+@app.get("/debug/config")
+async def debug_config():
+    """Debug: verificar configuración"""
+    from app.core.supabase_client import SupabaseClient
+    try:
+        client = SupabaseClient.get_client()
+        return {
+            "supabase_url": settings.SUPABASE_URL,
+            "cors_origins": settings.ALLOWED_ORIGINS,
+            "client_initialized": True
+        }
+    except Exception as e:
+        return {
+            "error": str(e),
+            "supabase_url": settings.SUPABASE_URL
+        }
+
+
 # Incluir routers de la API
 from app.api.v1.endpoints import auth
 

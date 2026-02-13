@@ -40,14 +40,12 @@ async def register(user_data: UserRegister):
     Retorna la información del usuario creado y tokens de sesión.
     """
     try:
-        # Preparar metadata del usuario
-        metadata = {}
-        if user_data.full_name:
-            metadata["full_name"] = user_data.full_name
-        if user_data.phone:
-            metadata["phone"] = user_data.phone
+        # Registrar usuario en Supabase Auth
+        metadata = {
+            "full_name": user_data.full_name,
+            "phone": user_data.phone
+        }
         
-        # Registrar usuario con Supabase
         response = await SupabaseAuth.sign_up(
             email=user_data.email,
             password=user_data.password,
@@ -55,34 +53,57 @@ async def register(user_data: UserRegister):
         )
         
         # Formatear respuesta
+        # Convertir created_at a string si es un datetime
+        created_at_str = None
+        if hasattr(response["user"], 'created_at') and response["user"].created_at:
+            if isinstance(response["user"].created_at, str):
+                created_at_str = response["user"].created_at
+            else:
+                created_at_str = response["user"].created_at.isoformat()
+        
         user_info = UserResponse(
             id=response["user"].id,
             email=response["user"].email,
-            full_name=metadata.get("full_name"),
-            phone=metadata.get("phone"),
+            full_name=response["user"].user_metadata.get("full_name"),
+            phone=response["user"].user_metadata.get("phone"),
             email_confirmed=response["user"].email_confirmed_at is not None,
-            created_at=response["user"].created_at,
+            created_at=created_at_str,
             metadata=response["user"].user_metadata
         )
         
-        session_token = None
-        if response["session"]:
+        # Manejar el caso cuando no hay sesión inmediata (confirmación de email requerida)
+        if response.get("session") is None:
+            # Si no hay sesión, generar tokens temporales para login posterior
+            session_token = Token(
+                access_token="",
+                refresh_token="",
+                token_type="bearer",
+                expires_in=None
+            )
+            message = "Usuario registrado exitosamente. Revisa tu email para confirmar tu cuenta y luego inicia sesión."
+        else:
             session_token = Token(
                 access_token=response["session"].access_token,
                 refresh_token=response["session"].refresh_token,
                 token_type="bearer",
-                expires_in=response["session"].expires_in
+                expires_in=response["session"].expires_in if hasattr(response["session"], 'expires_in') else None
             )
+            message = "Usuario registrado exitosamente e iniciado sesión."
         
         return AuthResponse(
             user=user_info,
             session=session_token,
-            message="Usuario registrado exitosamente. Revisa tu email para confirmar tu cuenta."
+            message=message
         )
     
     except HTTPException:
         raise
     except Exception as e:
+        import traceback
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error(f"Error al registrar usuario: {str(e)}", exc_info=True)
+        traceback.print_exc()
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error al registrar usuario: {str(e)}"
@@ -106,28 +127,47 @@ async def login(credentials: UserLogin):
     Retorna la información del usuario y tokens de sesión (access_token y refresh_token).
     """
     try:
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"Intentando login con email: {credentials.email}")
+        
         # Autenticar con Supabase
         response = await SupabaseAuth.sign_in(
             email=credentials.email,
             password=credentials.password
         )
         
+        logger.info(f"Login exitoso para: {credentials.email}")
+        
         # Formatear respuesta
+        # Convertir created_at a string si es un datetime
+        created_at_str = None
+        if hasattr(response["user"], 'created_at') and response["user"].created_at:
+            if isinstance(response["user"].created_at, str):
+                created_at_str = response["user"].created_at
+            else:
+                created_at_str = response["user"].created_at.isoformat()
+        
         user_info = UserResponse(
             id=response["user"].id,
             email=response["user"].email,
-            full_name=response["user"].user_metadata.get("full_name"),
-            phone=response["user"].user_metadata.get("phone"),
+            full_name=response["user"].user_metadata.get("full_name") if response["user"].user_metadata else None,
+            phone=response["user"].user_metadata.get("phone") if response["user"].user_metadata else None,
             email_confirmed=response["user"].email_confirmed_at is not None,
-            created_at=response["user"].created_at,
-            metadata=response["user"].user_metadata
+            created_at=created_at_str,
+            metadata=response["user"].user_metadata if response["user"].user_metadata else {}
         )
         
+        # Manejar caso donde session puede ser None
+        expires_in = None
+        if response.get("session") and hasattr(response["session"], 'expires_in'):
+            expires_in = response["session"].expires_in
+        
         session_token = Token(
-            access_token=response["access_token"],
-            refresh_token=response["refresh_token"],
+            access_token=response.get("access_token", ""),
+            refresh_token=response.get("refresh_token", ""),
             token_type="bearer",
-            expires_in=response["session"].expires_in if response["session"] else None
+            expires_in=expires_in
         )
         
         return AuthResponse(
@@ -139,6 +179,11 @@ async def login(credentials: UserLogin):
     except HTTPException:
         raise
     except Exception as e:
+        import logging
+        import traceback
+        logger = logging.getLogger(__name__)
+        logger.error(f"Error al iniciar sesión: {str(e)}", exc_info=True)
+        traceback.print_exc()
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error al iniciar sesión: {str(e)}"
@@ -317,14 +362,22 @@ async def get_current_user(authorization: Optional[str] = Header(None)):
         # Obtener usuario con Supabase
         user = await SupabaseAuth.get_user_from_token(access_token)
         
+        # Convertir created_at a string si es un datetime
+        created_at_str = None
+        if hasattr(user, 'created_at') and user.created_at:
+            if isinstance(user.created_at, str):
+                created_at_str = user.created_at
+            else:
+                created_at_str = user.created_at.isoformat()
+        
         return UserResponse(
             id=user.id,
             email=user.email,
-            full_name=user.user_metadata.get("full_name"),
-            phone=user.user_metadata.get("phone"),
+            full_name=user.user_metadata.get("full_name") if user.user_metadata else None,
+            phone=user.user_metadata.get("phone") if user.user_metadata else None,
             email_confirmed=user.email_confirmed_at is not None,
-            created_at=user.created_at,
-            metadata=user.user_metadata
+            created_at=created_at_str,
+            metadata=user.user_metadata if user.user_metadata else {}
         )
     
     except HTTPException:

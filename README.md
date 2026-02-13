@@ -57,11 +57,13 @@ Usamos **Scrum** para organizar el trabajo. Lee nuestra [Guía de Scrum](docs/pr
 - **Python 3.11+**
 
 ### Frontend
-- **Next.js 14** - Framework de React con App Router
+- **Vue 3** - Framework progresivo de JavaScript
 - **TypeScript** - Tipado estático
+- **Vite** - Build tool moderno y rápido
+- **Pinia** - Store de estado oficial para Vue
+- **Vue Router** - Router oficial de Vue
 - **Tailwind CSS** - Framework CSS utility-first
-- **Shadcn/ui** - Componentes UI (próximamente)
-- **TanStack Query** - Gestión de estado del servidor (próximamente)
+- **Axios** - Cliente HTTP para API
 
 ### Base de Datos & Auth
 - **Supabase** - PostgreSQL gestionado + Autenticación
@@ -105,7 +107,7 @@ npm run dev
 **URLs:**
 - Backend: http://localhost:8000
 - API Docs: http://localhost:8000/api/docs
-- Frontend: http://localhost:3000
+- Frontend: http://localhost:5173
 
 **Ver la [Guía de Instalación Completa](INSTALLATION.md) para detalles.**
 📘 **[Guía de Configuración de Supabase](docs/setup/SETUP_SUPABASE.md)**
@@ -136,17 +138,19 @@ sistema-gestion-ferreteria/
 │   ├── requirements.txt       # Dependencias Python
 │   └── README.md
 │
-├── frontend/                   # Aplicación Frontend (Next.js)
+├── frontend/                   # Aplicación Frontend (Vue 3)
 │   ├── src/
-│   │   ├── app/               # App Router (páginas)
-│   │   ├── components/        # Componentes React
-│   │   ├── lib/               # Utilidades y configs
-│   │   ├── services/          # API clients
-│   │   ├── types/             # Tipos TypeScript
-│   │   ├── contexts/          # React Contexts
-│   │   └── hooks/             # Custom Hooks
+│   │   ├── assets/            # Recursos (CSS, imágenes)
+│   │   ├── components/        # Componentes Vue reutilizables
+│   │   ├── router/            # Configuración de Vue Router
+│   │   ├── services/          # API clients (Axios)
+│   │   ├── stores/            # Pinia stores (estado global)
+│   │   ├── views/             # Vistas/Páginas
+│   │   ├── App.vue            # Componente raíz
+│   │   └── main.ts            # Punto de entrada
 │   ├── public/                # Assets estáticos
 │   ├── package.json
+│   ├── vite.config.ts         # Configuración de Vite
 │   └── README.md
 │
 ├── docs/                       # Documentación completa
