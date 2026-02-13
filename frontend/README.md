@@ -1,185 +1,234 @@
-# Frontend - Sistema de Gestión de Ferretería
+# Frontend - Vue 3 + TypeScript + Vite
 
-Aplicación web moderna construida con Next.js 14 para el sistema de gestión de ferreterías (SaaS Multi-tenant).
+Sistema de gestión de ferretería - Frontend desarrollado con Vue 3, TypeScript, Pinia y Tailwind CSS.
 
 ## 🚀 Tecnologías
 
-- **Next.js** 14+ - Framework React con App Router
-- **TypeScript** - Tipado estático
-- **Tailwind CSS** - Framework de estilos
-- **Supabase** - Cliente para autenticación y base de datos
-- **React** 19+ - Biblioteca de UI
+- **Vue 3** - Framework progresivo de JavaScript
+- **TypeScript** - Tipado estático para JavaScript
+- **Vite** - Build tool moderno y rápido
+- **Pinia** - Store de estado oficial para Vue
+- **Vue Router** - Router oficial de Vue
+- **Tailwind CSS** - Framework de CSS utility-first
+- **Axios** - Cliente HTTP
+- **Sentry** - Monitoreo de errores (opcional)
+
+## 📋 Requisitos Previos
+
+- Node.js >= 20.19.0 o >= 22.12.0
+- npm o yarn
+
+## 🛠️ Instalación
+
+1. **Instalar dependencias:**
+```bash
+npm install
+```
+
+2. **Configurar variables de entorno:**
+```bash
+cp .env.example .env
+```
+
+Editar el archivo `.env` con tus configuraciones:
+```env
+VITE_API_URL=http://localhost:8000/api/v1
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_SENTRY_DSN=your_sentry_dsn  # Opcional
+VITE_ENVIRONMENT=development
+```
+
+## 🏃 Ejecución
+
+### Desarrollo
+```bash
+npm run dev
+```
+La aplicación estará disponible en `http://localhost:5173`
+
+### Build para Producción
+```bash
+npm run build
+```
+
+### Preview del Build
+```bash
+npm run preview
+```
+
+### Linting
+```bash
+npm run lint
+```
+
+### Type Checking
+```bash
+npm run type-check
+```
 
 ## 📁 Estructura del Proyecto
 
 ```
 frontend/
+├── public/              # Archivos estáticos
 ├── src/
-│   ├── app/                    # App Router de Next.js
-│   │   ├── layout.tsx         # Layout principal
-│   │   └── page.tsx           # Página de inicio
-│   ├── components/             # Componentes React reutilizables
-│   ├── lib/                    # Utilidades y configuraciones
-│   │   ├── config.ts          # Configuración centralizada
-│   │   ├── utils.ts           # Funciones auxiliares
-│   │   └── supabase.ts        # Cliente de Supabase
-│   ├── services/               # Servicios API
-│   │   └── api-client.ts      # Cliente HTTP
-│   ├── types/                  # Definiciones de tipos TypeScript
-│   │   └── index.ts           # Tipos exportados
-│   └── styles/                 # Estilos globales
-├── public/                     # Archivos estáticos
-├── .env.example               # Variables de entorno ejemplo
-├── .env.local                 # Variables de entorno (no commitear)
-└── README.md                  # Este archivo
+│   ├── assets/         # Recursos (CSS, imágenes)
+│   │   └── main.css   # Estilos globales con Tailwind
+│   ├── components/     # Componentes reutilizables
+│   ├── router/         # Configuración de rutas
+│   │   └── index.ts   # Router con navigation guards
+│   ├── services/       # Servicios de API
+│   │   ├── api-client.ts      # Cliente Axios configurado
+│   │   └── auth.service.ts    # Servicio de autenticación
+│   ├── stores/         # Stores de Pinia
+│   │   └── auth.ts    # Store de autenticación
+│   ├── views/          # Vistas/Páginas
+│   │   ├── auth/
+│   │   │   ├── LoginView.vue
+│   │   │   ├── RegisterView.vue
+│   │   │   └── ForgotPasswordView.vue
+│   │   └── DashboardView.vue
+│   ├── App.vue         # Componente raíz
+│   └── main.ts         # Punto de entrada
+├── .env                # Variables de entorno (no commiteado)
+├── .env.example        # Ejemplo de variables de entorno
+├── index.html          # HTML principal
+├── package.json        # Dependencias y scripts
+├── tailwind.config.js  # Configuración de Tailwind
+├── tsconfig.json       # Configuración de TypeScript
+└── vite.config.ts      # Configuración de Vite
 ```
 
-## 🛠️ Instalación y Configuración
+## 🔐 Autenticación
 
-### 1. Requisitos Previos
+El sistema utiliza **Pinia** para el manejo de estado de autenticación:
 
-- Node.js 18+
-- npm, yarn, pnpm o bun
-- Cuenta de Supabase configurada
+### Store de Autenticación (`stores/auth.ts`)
+- `user` - Usuario actual
+- `accessToken` - Token de acceso JWT
+- `isLoading` - Estado de carga
+- `isAuthenticated` - Estado de autenticación
 
-### 2. Instalar Dependencias
+### Acciones disponibles:
+- `initializeAuth()` - Inicializar desde localStorage
+- `login(email, password)` - Iniciar sesión
+- `register(data)` - Registrar usuario
+- `logout()` - Cerrar sesión
+- `refreshSession()` - Refrescar token
 
-```bash
-npm install
-# o
-yarn install
-# o
-pnpm install
-```
+### Navigation Guards
 
-### 3. Configurar Variables de Entorno
-
-```bash
-# Copiar archivo de ejemplo
-cp .env.example .env.local
-
-# Editar .env.local con tus credenciales
-# - NEXT_PUBLIC_API_URL (URL del backend)
-# - NEXT_PUBLIC_SUPABASE_URL
-# - NEXT_PUBLIC_SUPABASE_ANON_KEY
-# - NEXT_PUBLIC_SENTRY_DSN (opcional, monitoreo)
-```
-
-> 📘 **Configurar Supabase**: Consulta la guía [SETUP_SUPABASE.md](../docs/setup/SETUP_SUPABASE.md) en la raíz del proyecto para instrucciones detalladas sobre cómo crear y configurar tu proyecto de Supabase.
-
-## 🚀 Ejecutar la Aplicación
-
-### Modo Desarrollo
-
-```bash
-npm run dev
-# o
-yarn dev
-# o
-pnpm dev
-```
-
-La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
-
-## 🛡️ Sentry (Opcional)
-
-Para habilitar monitoreo en produccion:
-
-1. Crea un proyecto en Sentry.
-2. Configura `NEXT_PUBLIC_SENTRY_DSN` en `.env.local`.
-3. Si quieres subir sourcemaps en build, agrega `SENTRY_ORG`, `SENTRY_PROJECT` y `SENTRY_AUTH_TOKEN`.
-
-### Modo Producción
-
-```bash
-# Construir la aplicación
-npm run build
-
-# Ejecutar en producción
-npm run start
-```
-
-## 🧪 Linting
-
-```bash
-# Ejecutar ESLint
-npm run lint
-```
-
-## 📦 Bibliotecas Principales
-
-- **@supabase/supabase-js**: Cliente oficial de Supabase para JavaScript
-- **Tailwind CSS**: Framework de utilidades CSS
-- **TypeScript**: Superset de JavaScript con tipado estático
-
-## 🎨 Arquitectura
-
-Este proyecto sigue las mejores prácticas de Next.js 14 con App Router:
-
-- **App Router**: Sistema de enrutamiento basado en el sistema de archivos
-- **Server Components**: Renderizado del lado del servidor por defecto
-- **Client Components**: Componentes interactivos marcados con `'use client'`
-- **API Integration**: Servicios centralizados para llamadas al backend
-- **Type Safety**: TypeScript en todo el proyecto
-
-### Estructura de Capas
-
-- **Presentation Layer**: Componentes de UI (React)
-- **Service Layer**: Lógica de comunicación con APIs
-- **Type Layer**: Definiciones de tipos compartidos
-- **Configuration**: Gestión centralizada de configuración
-
-## 🔐 Integración con Supabase
-
-El cliente de Supabase está configurado en `src/lib/supabase.ts` y proporciona:
-
-- **Autenticación**: Login, registro, recuperación de contraseña
-- **Consultas a BD**: Acceso directo a tablas mediante PostgREST
-- **Storage**: Subida y gestión de archivos
-- **Realtime**: Subscripciones a cambios en tiempo real
-
-### Ejemplo de Uso
+Las rutas están protegidas con navigation guards:
 
 ```typescript
-import { supabase } from '@/lib/supabase';
+// Ruta protegida (requiere autenticación)
+{
+  path: '/dashboard',
+  meta: { requiresAuth: true }
+}
 
-// Autenticación
-const { data, error } = await supabase.auth.signInWithPassword({
-  email: 'user@example.com',
-  password: 'password123'
-});
-
-// Consulta
-const { data: products } = await supabase
-  .from('products')
-  .select('*')
-  .limit(10);
+// Ruta para invitados (solo sin autenticación)
+{
+  path: '/auth/login',
+  meta: { requiresGuest: true }
+}
 ```
 
-## 📝 Convenciones de Código
+## 🎨 Tailwind CSS
 
-- Usar **camelCase** para variables y funciones
-- Usar **PascalCase** para componentes y clases
-- Usar **kebab-case** para nombres de archivos
-- Organizar imports: React → Next.js → Externos → Internos
-- Documentar componentes complejos con JSDoc
-- Prefijar componentes cliente con `'use client'`
+El proyecto usa Tailwind CSS v4 con configuración personalizada:
 
-## 🔗 Enlaces Útiles
+### Colores de marca
+- `brand-{50-900}` - Colores azules corporativos
+- `neutral-{0-950}` - Escala de grises
 
-- [Documentación de Next.js](https://nextjs.org/docs)
-- [Documentación de Supabase](https://supabase.com/docs)
-- [Documentación de Tailwind CSS](https://tailwindcss.com/docs)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+### Utilidades personalizadas
+- `.gradient-primary` - Gradiente azul-morado
+- `.gradient-accent` - Gradiente rosa-rojo
+- `.gradient-success` - Gradiente verde-cyan
+- `.glass-effect` - Efecto glassmorphism
+- `.hover-lift` - Elevación al hover
+
+### Animaciones
+- `animate-fade-in` - Fade in suave
+- `animate-slide-up` - Deslizamiento hacia arriba
+- `animate-pulse-glow` - Pulso con brillo
+- `animate-float` - Flotación continua
+
+## 🔌 API Client
+
+El cliente HTTP está configurado con interceptors:
+
+### Request Interceptor
+- Agrega automáticamente el token de autenticación a las peticiones
+
+### Response Interceptor
+- Maneja errores 401 automáticamente
+- Refresca el token si es necesario
+- Redirige al login si falla el refresh
+
+## 📝 Migraciones desde Next.js
+
+Este proyecto fue migrado de Next.js a Vue 3. Principales cambios:
+
+| Next.js | Vue 3 |
+|---------|-------|
+| Context API | Pinia Store |
+| useRouter (Next) | useRouter (Vue Router) |
+| pages/ | views/ |
+| Link | router-link |
+| useEffect | onMounted |
+| useState | ref |
+
+## 🐛 Debugging
+
+### Errores comunes
+
+1. **CORS Error**: Verifica que el backend tenga configurado el CORS correctamente
+2. **401 Unauthorized**: Verifica que el token esté presente en localStorage
+3. **Network Error**: Verifica que la API esté corriendo en el puerto correcto
+
+### Vue DevTools
+
+Instala [Vue.js devtools](https://devtools.vuejs.org/) para debugging avanzado:
+- Inspección de componentes
+- Estado de Pinia
+- Router
+- Timeline de eventos
+
+## 📦 Build y Deployment
+
+### Variables de entorno para producción
+
+Asegúrate de configurar en tu servidor:
+```env
+VITE_API_URL=https://api.tudominio.com/api/v1
+VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
+VITE_SUPABASE_ANON_KEY=tu_anon_key
+VITE_SENTRY_DSN=tu_sentry_dsn
+VITE_ENVIRONMENT=production
+```
+
+### Build optimizado
+```bash
+npm run build
+```
+
+Los archivos se generarán en `dist/`
 
 ## 🤝 Contribución
 
-1. Crear rama feature: `git checkout -b feature/nueva-funcionalidad`
-2. Commit cambios: `git commit -m 'Add: nueva funcionalidad'`
-3. Push a la rama: `git push origin feature/nueva-funcionalidad`
-4. Crear Pull Request
+1. Fork el proyecto
+2. Crea una rama (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
 ## 📄 Licencia
 
-Por definir
+Este proyecto es privado y confidencial.
 
+---
+
+Para más información, consulta la [documentación principal](../README.md) del proyecto.

@@ -1,70 +1,80 @@
 /**
- * Cliente API para comunicación con el backend
+ * Cliente HTTP configurado con Axios
+ * Interceptors para manejo de tokens y errores
  */
-import { config } from "@/lib/config";
 
-type RequestOptions = {
-  method?: string;
-  headers?: Record<string, string>;
-  body?: unknown;
-  token?: string;
-};
+import axios from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
 
-class ApiClient {
-  private baseUrl: string;
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1'
 
-  constructor() {
-    this.baseUrl = config.api.url;
+// Crear instancia de Axios
+const apiClient: AxiosInstance = axios.create({
+  baseURL: API_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  timeout: 15000,
+})
+
+// Request Interceptor - Agregar token de autenticación
+apiClient.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('access_token')
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+    return config
+  },
+  (error: AxiosError) => {
+    return Promise.reject(error)
   }
+)
 
-  private async request<T>(
-    endpoint: string,
-    options: RequestOptions = {}
-  ): Promise<T> {
-    const { method = "GET", headers = {}, body, token } = options;
+// Response Interceptor - Manejo de errores globales
+apiClient.interceptors.response.use(
+  (response: AxiosResponse) => {
+    return response
+  },
+  async (error: AxiosError) => {
+    const originalRequest = error.config as AxiosRequestConfig & { _retry?: boolean }
 
-    const config: RequestInit = {
-      method,
-      headers: {
-        "Content-Type": "application/json",
-        ...headers,
-        ...(token && { Authorization: `Bearer ${token}` }),
-      },
-    };
+    // Si el error es 401 y no hemos reintentado aún
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
 
-    if (body) {
-      config.body = JSON.stringify(body);
+      try {
+        // Intentar refrescar el token
+        const refreshToken = localStorage.getItem('refresh_token')
+        if (refreshToken) {
+          const response = await axios.post(`${API_URL}/auth/refresh-token`, {
+            refresh_token: refreshToken,
+          })
+
+          const { access_token, refresh_token: newRefreshToken } = response.data
+
+          // Guardar nuevos tokens
+          localStorage.setItem('access_token', access_token)
+          localStorage.setItem('refresh_token', newRefreshToken)
+
+          // Reintentar la petición original con el nuevo token
+          if (originalRequest.headers) {
+            originalRequest.headers.Authorization = `Bearer ${access_token}`
+          }
+          return apiClient(originalRequest)
+        }
+      } catch (refreshError) {
+        // Si falla el refresh, limpiar tokens y redirigir al login
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('refresh_token')
+        localStorage.removeItem('user')
+        window.location.href = '/auth/login'
+        return Promise.reject(refreshError)
+      }
     }
 
-    const response = await fetch(`${this.baseUrl}${endpoint}`, config);
-
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || "Error en la petición");
-    }
-
-    return response.json();
+    return Promise.reject(error)
   }
+)
 
-  async get<T>(endpoint: string, token?: string): Promise<T> {
-    return this.request<T>(endpoint, { method: "GET", token });
-  }
-
-  async post<T>(endpoint: string, data: unknown, token?: string): Promise<T> {
-    return this.request<T>(endpoint, { method: "POST", body: data, token });
-  }
-
-  async put<T>(endpoint: string, data: unknown, token?: string): Promise<T> {
-    return this.request<T>(endpoint, { method: "PUT", body: data, token });
-  }
-
-  async patch<T>(endpoint: string, data: unknown, token?: string): Promise<T> {
-    return this.request<T>(endpoint, { method: "PATCH", body: data, token });
-  }
-
-  async delete<T>(endpoint: string, token?: string): Promise<T> {
-    return this.request<T>(endpoint, { method: "DELETE", token });
-  }
-}
-
-export const apiClient = new ApiClient();
+export default apiClient

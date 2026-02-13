@@ -15,11 +15,13 @@ class SupabaseAuth:
     async def sign_up(email: str, password: str, metadata: Optional[Dict[str, Any]] = None):
         """
         Registra un nuevo usuario en Supabase Auth.
+        El trigger de Supabase crea automáticamente el registro en la tabla usuarios.
         
         Args:
             email: Email del usuario
             password: Contraseña (mínimo 8 caracteres recomendado)
             metadata: Metadata adicional del usuario (nombre, rol, etc.)
+                     Puede incluir: full_name, phone, etc.
         
         Returns:
             Dict con información del usuario y sesión
@@ -28,6 +30,9 @@ class SupabaseAuth:
             HTTPException: Si hay error en el registro
         """
         try:
+            import logging
+            logger = logging.getLogger(__name__)
+            
             client = supabase_client()
             
             # Validar contraseña
@@ -37,7 +42,10 @@ class SupabaseAuth:
                     detail=f"La contraseña debe tener al menos {settings.SUPABASE_AUTH_PASSWORD_MIN_LENGTH} caracteres"
                 )
             
-            # Registrar usuario
+            logger.info(f"Registrando usuario: {email}")
+            
+            # Registrar usuario en Supabase Auth
+            # El trigger de Supabase (handle_new_user) creará automáticamente el registro en usuarios
             response = client.auth.sign_up({
                 "email": email,
                 "password": password,
@@ -46,17 +54,29 @@ class SupabaseAuth:
                 }
             })
             
+            logger.info(f"Usuario {email} registrado exitosamente en Auth")
+            
             return {
                 "user": response.user,
                 "session": response.session
             }
             
         except AuthApiError as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Error de API Supabase: {str(e)}", exc_info=True)
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail=f"Error al registrar usuario: {str(e)}"
             )
+        except HTTPException:
+            raise
         except Exception as e:
+            import logging
+            import traceback
+            logger = logging.getLogger(__name__)
+            logger.error(f"Error inesperado: {str(e)}", exc_info=True)
+            traceback.print_exc()
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail=f"Error interno: {str(e)}"
@@ -78,12 +98,27 @@ class SupabaseAuth:
             HTTPException: Si las credenciales son inválidas
         """
         try:
+            import logging
+            logger = logging.getLogger(__name__)
+            
             client = supabase_client()
+            
+            logger.info(f"Iniciando sign_in para: {email}")
             
             response = client.auth.sign_in_with_password({
                 "email": email,
                 "password": password
             })
+            
+            logger.info(f"Sign_in exitoso para: {email}")
+            
+            # Asegurarse de que session existe
+            if not response.session:
+                logger.warning(f"No hay sesión para: {email}")
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail="No se pudo obtener la sesión. Asegúrate de confirmar tu email."
+                )
             
             return {
                 "user": response.user,
@@ -93,11 +128,21 @@ class SupabaseAuth:
             }
             
         except AuthApiError as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Error de autenticación: {str(e)}", exc_info=True)
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Email o contraseña incorrectos"
             )
+        except HTTPException:
+            raise
         except Exception as e:
+            import logging
+            import traceback
+            logger = logging.getLogger(__name__)
+            logger.error(f"Error inesperado en sign_in: {str(e)}", exc_info=True)
+            traceback.print_exc()
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail=f"Error interno: {str(e)}"
