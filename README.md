@@ -109,6 +109,24 @@ npm run dev
 - API Docs: http://localhost:8000/api/docs
 - Frontend: http://localhost:5173
 
+### 🚀 Prender los Servidores
+
+Una vez completada la instalación, ejecuta los siguientes comandos en **terminales separadas**:
+
+**Terminal 1 - Backend (FastAPI):**
+```bash
+cd backend
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+**Terminal 2 - Frontend (Vue 3 + Vite):**
+```bash
+cd frontend
+npm run dev
+```
+
+Luego abre tu navegador en: **http://localhost:5173**
+
 **Ver la [Guía de Instalación Completa](INSTALLATION.md) para detalles.**
 📘 **[Guía de Configuración de Supabase](docs/setup/SETUP_SUPABASE.md)**
 

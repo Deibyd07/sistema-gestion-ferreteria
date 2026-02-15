@@ -100,11 +100,12 @@ const handleSubmit = async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #080e1e;
+  background: transparent;
   font-family: 'Inter', sans-serif;
   position: relative;
   overflow: hidden;
   padding: 1rem;
+  z-index: 10;
 }
 
 .forgot-bg {

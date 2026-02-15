@@ -1,47 +1,175 @@
 <template>
-  <div class="stat-card" :class="color">
-    <!-- Accent bar left -->
-    <div class="accent-bar"></div>
+  <div 
+    :class="cardClasses"
+    class="group relative overflow-hidden bg-gradient-to-br from-surface-elevated to-surface-base border border-surface-border rounded-2xl p-6 transition-all duration-300 hover:translate-y-[-4px] hover:shadow-2xl animate-slide-up"
+  >
+    <!-- Glow effect on hover -->
+    <div 
+      class="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+      :class="glowGradient"
+    />
 
-    <div class="stat-content">
-      <div class="stat-info">
-        <!-- Title -->
-        <p class="stat-title">{{ title }}</p>
-
-        <!-- Value -->
-        <p class="stat-value">{{ value }}</p>
-
-        <!-- Change -->
-        <div v-if="change !== undefined" class="stat-change">
-          <span :class="['change-badge', change >= 0 ? 'positive' : 'negative']">
-            <svg v-if="change >= 0" width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+    <!-- Content -->
+    <div class="relative">
+      <!-- Header with Icon -->
+      <div class="flex items-start justify-between mb-4">
+        <div 
+          :class="iconWrapperClasses"
+          class="flex items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-110"
+        >
+          <slot name="icon">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
             </svg>
-            <svg v-else width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V5a1 1 0 012 0v7.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-            </svg>
-            {{ Math.abs(change) }}%
-          </span>
-          <span class="stat-period">{{ period }}</span>
+          </slot>
+        </div>
+
+        <!-- Trend Badge -->
+        <div 
+          v-if="change !== undefined" 
+          :class="trendClasses" 
+          class="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold"
+        >
+          <svg v-if="trend === 'up'" class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+          </svg>
+          <svg v-else class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V5a1 1 0 012 0v7.586l2.293-2.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+          </svg>
+          <span>{{ Math.abs(change) }}%</span>
         </div>
       </div>
 
-      <!-- Icon -->
-      <div class="stat-icon">
-        <slot name="icon" />
+      <!-- Title -->
+      <p class="text-sm font-medium text-slate-400 uppercase tracking-wider mb-2">
+        {{ title }}
+      </p>
+
+      <!-- Value with animation -->
+      <div class="flex items-baseline gap-2 mb-1">
+        <p class="text-3xl font-bold text-slate-100">
+          <AnimatedNumber 
+            v-if="typeof value === 'number'"
+            :value="value" 
+            :format="format"
+            :decimals="decimals"
+          />
+          <span v-else>{{ value }}</span>
+        </p>
       </div>
+
+      <!-- Period -->
+      <p v-if="period" class="text-xs text-slate-500">
+        {{ period }}
+      </p>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div 
+      v-if="loading" 
+      class="absolute inset-0 bg-surface-elevated/80 backdrop-blur-sm flex items-center justify-center"
+    >
+      <div class="animate-spin rounded-full h-8 w-8 border-2 border-accent-400 border-t-transparent" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
-  title: { type: String, required: true },
-  value: { type: String, required: true },
-  color: { type: String, default: 'teal' },
-  change: Number,
-  period: { type: String, default: 'vs última semana' }
+import { computed } from 'vue'
+import AnimatedNumber from './AnimatedNumber.vue'
+
+interface Props {
+  title: string
+  value: number | string
+  format?: 'number' | 'currency' | 'percentage' | 'compact'
+  decimals?: number
+  change?: number
+  period?: string
+  color?: 'accent' | 'blue' | 'purple' | 'success' | 'warning' | 'danger' | 'teal' | 'orange'
+  loading?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  format: 'number',
+  decimals: 0,
+  color: 'accent',
+  loading: false,
 })
+
+const trend = computed(() => {
+  if (props.change === undefined) return null
+  return props.change >= 0 ? 'up' : 'down'
+})
+
+const trendClasses = computed(() => {
+  if (trend.value === 'up') {
+    return 'bg-success-500/10 text-success-400'
+  } else {
+    return 'bg-danger-500/10 text-danger-400'
+  }
+})
+
+const colorConfig = {
+  accent: {
+    gradient: 'from-accent-500 to-cyan-500',
+    glow: 'from-accent-500/20 to-cyan-500/20',
+    shadow: 'shadow-accent-500/20',
+  },
+  blue: {
+    gradient: 'from-blue-500 to-blue-600',
+    glow: 'from-blue-500/20 to-blue-600/20',
+    shadow: 'shadow-blue-500/20',
+  },
+  purple: {
+    gradient: 'from-purple-500 to-violet-600',
+    glow: 'from-purple-500/20 to-violet-600/20',
+    shadow: 'shadow-purple-500/20',
+  },
+  success: {
+    gradient: 'from-success-500 to-success-600',
+    glow: 'from-success-500/20 to-success-600/20',
+    shadow: 'shadow-success-500/20',
+  },
+  warning: {
+    gradient: 'from-warning-500 to-warning-600',
+    glow: 'from-warning-500/20 to-warning-600/20',
+    shadow: 'shadow-warning-500/20',
+  },
+  danger: {
+    gradient: 'from-danger-500 to-danger-600',
+    glow: 'from-danger-500/20 to-danger-600/20',
+    shadow: 'shadow-danger-500/20',
+  },
+  teal: {
+    gradient: 'from-teal-500 to-teal-600',
+    glow: 'from-teal-500/20 to-teal-600/20',
+    shadow: 'shadow-teal-500/20',
+  },
+  orange: {
+    gradient: 'from-orange-500 to-orange-600',
+    glow: 'from-orange-500/20 to-orange-600/20',
+    shadow: 'shadow-orange-500/20',
+  },
+}
+
+const config = computed(() => colorConfig[props.color] || colorConfig.accent)
+
+const iconWrapperClasses = computed(() => [
+  'w-12 h-12',
+  'bg-gradient-to-br',
+  config.value.gradient,
+  'shadow-lg',
+  config.value.shadow,
+])
+
+const glowGradient = computed(() => [
+  'bg-gradient-to-br',
+  config.value.glow,
+])
+
+const cardClasses = computed(() => [
+  props.loading ? 'pointer-events-none' : '',
+])
 </script>
 
 <style scoped>

@@ -118,24 +118,34 @@ const handleLogout = async () => {
 
 <style scoped>
 .navbar {
-  position: sticky; top: 0; z-index: 40;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(10, 14, 23, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(20, 184, 166, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-container {
-  max-width: 1600px; margin: 0 auto;
-  padding: 0 1.5rem;
+  width: 100%;
+  padding: 0 2rem;
 }
 
 .navbar-content {
   display: flex; align-items: center; justify-content: space-between;
   height: 64px;
+  gap: 3rem;
 }
 
 /* LEFT */
-.navbar-left { display: flex; align-items: center; gap: 1rem; }
+.navbar-left { 
+  display: flex; align-items: center; gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
 
 .mobile-toggle {
   display: none; padding: 0.5rem; color: #94a3b8;
@@ -151,11 +161,11 @@ const handleLogout = async () => {
 
 .navbar-logo-icon {
   width: 36px; height: 36px;
-  background: linear-gradient(135deg, #2dd4bf, #22d3ee);
-  border-radius: 12px;
+  background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  color: #0f172a;
-  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.2);
+  color: white;
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3), 0 0 0 1px rgba(20, 184, 166, 0.2);
 }
 
 .navbar-logo-text { display: none; }
@@ -165,7 +175,13 @@ const handleLogout = async () => {
 .logo-subtitle { font-size: 0.65rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
 
 /* CENTER */
-.navbar-center { flex: 1; display: none; justify-content: center; max-width: 480px; margin: 0 2rem; }
+.navbar-center { 
+  flex: 2;
+  display: none;
+  justify-content: center;
+  max-width: 700px;
+  margin: 0;
+}
 @media (min-width: 768px) { .navbar-center { display: flex; } }
 
 .search-wrapper {
@@ -203,7 +219,12 @@ const handleLogout = async () => {
 @media (min-width: 640px) { .search-shortcut { display: flex; } }
 
 /* RIGHT */
-.navbar-right { display: flex; align-items: center; gap: 0.5rem; }
+.navbar-right { 
+  display: flex; align-items: center; gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+  justify-content: flex-end;
+}
 
 .icon-btn {
   padding: 0.6rem; color: #94a3b8; border-radius: 12px;
@@ -277,7 +298,7 @@ const handleLogout = async () => {
 .logout { color: #fb7185; }
 .logout:hover { background: rgba(244, 63, 94, 0.05); color: #f43f5e; }
 
-.dropdown-overlay { fixed: inset-0; z-index: 40; }
+.dropdown-overlay { position: fixed; inset: 0; z-index: 40; }
 
 .dropdown-enter-active, .dropdown-leave-active { transition: all 0.2s ease; }
 .dropdown-enter-from, .dropdown-leave-to { opacity: 0; transform: translateY(-10px) scale(0.95); }

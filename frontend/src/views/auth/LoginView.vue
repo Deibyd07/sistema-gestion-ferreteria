@@ -169,8 +169,10 @@ const handleSubmit = async () => {
 .auth-page {
   min-height: 100vh;
   display: flex;
-  background: #080e1e;
+  background: transparent;
   font-family: 'Inter', sans-serif;
+  position: relative;
+  z-index: 10;
 }
 
 /* ── HERO PANEL (Left) ── */

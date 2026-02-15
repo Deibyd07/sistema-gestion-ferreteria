@@ -26,13 +26,16 @@ app = FastAPI(
     openapi_url="/api/openapi.json"
 )
 
-# Configurar CORS
+# Configurar CORS PRIMERO, antes de incluir routers
+# Esto es crítico para que el middleware funcione correctamente
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
+    max_age=600,
 )
 
 
