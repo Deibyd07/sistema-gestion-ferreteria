@@ -1,66 +1,111 @@
 <template>
-  <div :class="['base-card', { 'hoverable': hoverable, 'no-padding': noPadding }]">
+  <div :class="cardClasses">
     <!-- Header -->
-    <div v-if="$slots.header" class="card-header">
+    <div v-if="$slots.header" :class="headerClasses">
       <slot name="header" />
     </div>
 
     <!-- Content -->
-    <div class="card-content">
+    <div :class="contentClasses">
       <slot />
     </div>
 
     <!-- Footer -->
-    <div v-if="$slots.footer" class="card-footer">
+    <div v-if="$slots.footer" :class="footerClasses">
       <slot name="footer" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
-  hoverable: {
-    type: Boolean,
-    default: false
-  },
-  noPadding: {
-    type: Boolean,
-    default: false
+import { computed } from 'vue'
+
+interface Props {
+  variant?: 'default' | 'elevated' | 'outlined' | 'glass'
+  hover?: 'none' | 'lift' | 'glow' | 'border'
+  padding?: 'none' | 'sm' | 'md' | 'lg'
+  noPadding?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  variant: 'elevated',
+  hover: 'none',
+  padding: 'md',
+  noPadding: false,
+})
+
+const cardClasses = computed(() => {
+  const base = [
+    'rounded-2xl',
+    'overflow-hidden',
+    'transition-all duration-300 ease-spring',
+  ]
+
+  const variants = {
+    default: [
+      'bg-surface-base',
+      'border border-surface-border',
+    ],
+    elevated: [
+      'bg-gradient-to-b from-surface-elevated to-surface-base',
+      'border border-surface-border',
+      'shadow-dark-lg',
+    ],
+    outlined: [
+      'bg-transparent',
+      'border-2 border-surface-border',
+    ],
+    glass: [
+      'backdrop-blur-xl',
+      'bg-surface-elevated/50',
+      'border border-white/10',
+    ],
   }
+
+  const hovers = {
+    none: [],
+    lift: [
+      'hover:translate-y-[-4px]',
+      'hover:shadow-dark-xl',
+      'cursor-pointer',
+    ],
+    glow: [
+      'hover:shadow-glow',
+      'hover:border-accent-400/30',
+      'cursor-pointer',
+    ],
+    border: [
+      'hover:border-accent-400/50',
+      'cursor-pointer',
+    ],
+  }
+
+  return [
+    ...base,
+    ...variants[props.variant],
+    ...hovers[props.hover],
+  ]
+})
+
+const headerClasses = computed(() => {
+  const padding = props.noPadding ? '' : props.padding === 'sm' ? 'p-4' : props.padding === 'lg' ? 'p-8' : 'p-6'
+  return [
+    padding,
+    'border-b border-surface-border',
+  ]
+})
+
+const contentClasses = computed(() => {
+  if (props.noPadding) return ''
+  return props.padding === 'sm' ? 'p-4' : props.padding === 'lg' ? 'p-8' : 'p-6'
+})
+
+const footerClasses = computed(() => {
+  const padding = props.noPadding ? '' : props.padding === 'sm' ? 'p-4' : props.padding === 'lg' ? 'p-8' : 'p-6'
+  return [
+    padding,
+    'border-t border-surface-border',
+    'bg-white/[0.02]',
+  ]
 })
 </script>
-
-<style scoped>
-.base-card {
-  background: #1a2332; /* surface-1 */
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.base-card.hoverable:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-
-.card-header {
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.card-content {
-  padding: 1.5rem;
-}
-
-.base-card.no-padding .card-content {
-  padding: 0;
-}
-
-.card-footer {
-  padding: 1rem 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.02);
-}
-</style>
